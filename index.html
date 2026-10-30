@@ -460,6 +460,8 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 @media(max-width:480px){.cflow{grid-template-columns:1fr}}
 .warn{margin-top:10px;border:1px solid rgba(227,161,58,.5);background:rgba(227,161,58,.08);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5;color:#EED9B6}
 .warn b{color:var(--warn)}
+#p-invest{display:flex;flex-direction:column;gap:12px}#p-invest[hidden]{display:none}
+.safm .card{padding:16px}.safm .h3{font-size:19px}.safm .muted{font-size:13.5px;line-height:1.45}
 </style>
 </head>
 <body>
@@ -938,7 +940,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
   <div class="inner">
     <span class="eyebrow">11 · Token e investimento</span>
     <h2 class="h2">Fé e mercado, com as regras na mesa</h2>
-    <p class="lead">Dá para o cristão participar desses dois mundos de forma honesta. Separamos duas coisas que muita gente mistura: <b style="color:var(--wh)">participar</b> do clube e <b style="color:var(--wh)">investir</b> no clube. O token começa pela nossa comunidade no X. A participação na SAF ainda está em estudo.</p>
+    <p class="lead">Dá para o cristão participar desses dois mundos de forma honesta. Separamos duas coisas que muita gente mistura: <b style="color:var(--wh)">participar</b> do clube e <b style="color:var(--wh)">investir</b> no clube. O token começa pela nossa comunidade no X. A participação na SAF vem depois, por fases.</p>
     <div class="seg" role="tablist" aria-label="Caminhos">
       <button class="on" role="tab" aria-selected="true" data-pane="p-token">Caminho 1 · Token do clube</button>
       <button role="tab" aria-selected="false" data-pane="p-invest">Caminho 2 · Investir na SAF</button>
@@ -971,18 +973,32 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
       </div>
     </div>
     <div class="pane" id="p-invest" hidden>
+      <span class="eyebrow">Como funciona nos outros clubes</span>
+      <div class="grid g4 safm">
+        <div class="card"><h3 class="h3">Dono majoritário</h3><span class="muted">O modelo de Botafogo, Cruzeiro, Vasco e Bahia: um grupo compra a maior parte da SAF e a associação fica com uma fatia menor e o direito de proteger nome e símbolos.</span></div>
+        <div class="card"><h3 class="h3">Ações na bolsa</h3><span class="muted">Comum no Chile e na Europa. A Universidad Católica captou US$ 11 milhões com cerca de 3.800 novos acionistas. Exige registro de companhia aberta na CVM.</span></div>
+        <div class="card"><h3 class="h3">Crowdfunding</h3><span class="muted">A CVM permite que SAFs com receita de até R$ 40 milhões por ano vendam participação a torcedores por plataforma autorizada. É o caminho que cabe num clube do nosso tamanho.</span></div>
+        <div class="card"><h3 class="h3">Debêntures-fut</h3><span class="muted">Empréstimo com juros, não participação. Hoje, só para investidores qualificados, com prazo mínimo de dois anos.</span></div>
+      </div>
+      <span class="eyebrow" style="margin-top:6px">Como pode funcionar para nós</span>
+      <div class="cflow" aria-label="Fases da SAF">
+        <div class="cf"><b>1</b><span><strong>Fundar</strong>SAF do fundador com pessoas de confiança. Nenhuma captação de investidor.</span></div>
+        <div class="cf"><b>2</b><span><strong>Provar</strong>Receita de sócios, loja e patrocínio. Contas públicas, mês a mês.</span></div>
+        <div class="cf"><b>3</b><span><strong>Estruturar</strong>Avaliação do clube, conselho, estatuto e parecer do jurídico.</span></div>
+        <div class="cf go"><b>4</b><span><strong>Abrir</strong>Uma fatia minoritária, por plataforma autorizada pela CVM, com o controle mantido.</span></div>
+      </div>
       <div class="grid g2">
-        <div class="card"><span class="eyebrow">Primeiro os riscos</span><h3 class="h3">O que você precisa saber</h3>
+        <div class="card inv"><span class="eyebrow">Faz sentido abrir logo no começo?</span><h3 class="h3">Nossa leitura: ainda não</h3>
+          <ul class="plain"><li>Sem receita e sem histórico, não há como dar um valor justo ao clube. Quem entrasse agora pagaria pela fé no projeto, e é justamente esse apelo que a CVM proíbe usar.</li><li>Advogado, plataforma e documentos custam mais do que um clube novo consegue captar com segurança.</li><li>O foco do primeiro ano é outro: formar a base de apoiadores.</li><li>Cada fase depende de análise e aprovação do jurídico.</li></ul></div>
+        <div class="card"><span class="eyebrow">Quando chegar a hora</span><h3 class="h3">O que você precisa saber</h3>
           <ul class="plain risk"><li>Você pode perder o valor investido.</li><li>Não há garantia de retorno, nem de prazo para vender sua parte.</li><li>A decisão deve ser financeira. Amor ao time não é motivo para investir.</li></ul></div>
-        <div class="card"><span class="eyebrow">Depois como funciona</span><h3 class="h3">Só no cenário SAF</h3>
-          <ul class="plain"><li>No futuro, a SAF poderá abrir espaço para investidores, por plataforma autorizada pela CVM.</li><li>Participação real: se o clube gerar valor, ela pode valer mais.</li><li>A CVM permite essa captação para SAFs com receita de até R$ 40 milhões por ano, com regras de governança.</li><li>Tudo com contrato, documento de riscos e prestação de contas.</li></ul></div>
       </div>
     </div>
     <div class="card inv">
       <h3 class="h3">Compromisso de transparência</h3>
       <ol class="steps" style="gap:8px"><li><span>Prestação de contas mensal e pública no site.</span></li><li><span>Nenhum real de investimento captado antes da estrutura jurídica definida.</span></li><li><span>Contrato e riscos explicados por escrito antes de qualquer investimento.</span></li></ol>
     </div>
-    <p class="muted src">Conteúdo informativo. Não é oferta de investimento nem orientação jurídica ou financeira. Referências: <a href="https://www.migalhas.com.br/quentes/392682/cvm-permite-que-times-de-futebol-captem-recursos-com-crowdfunding" target="_blank" rel="noopener">Migalhas</a> · <a href="https://maquinadoesporte.com.br/futebol/mercado-de-acoes-anima-safs-que-nao-poderao-usar-paixao-para-atrair-investimentos-de-torcedores" target="_blank" rel="noopener">Máquina do Esporte</a> · <a href="https://www.machadomeyer.com.br/pt/inteligencia-juridica/publicacoes-ij/direito-digital/fan-token-quanto-vale-o-sentimento-de-um-torcedor" target="_blank" rel="noopener">Machado Meyer</a></p>
+    <p class="muted src">Conteúdo informativo. Não é oferta de investimento nem orientação jurídica ou financeira. Referências: <a href="https://www.migalhas.com.br/quentes/392682/cvm-permite-que-times-de-futebol-captem-recursos-com-crowdfunding" target="_blank" rel="noopener">Migalhas</a> · <a href="https://maquinadoesporte.com.br/futebol/mercado-de-acoes-anima-safs-que-nao-poderao-usar-paixao-para-atrair-investimentos-de-torcedores" target="_blank" rel="noopener">Máquina do Esporte</a> · <a href="https://investalk.bb.com.br/noticias/quero-aprender/conheca-debentures-fut-nova-forma-captacao-recursos-times-futebol" target="_blank" rel="noopener">BB Investalk</a> · <a href="https://www.mattosfilho.com.br/unico/cvm-sociedades-anonimas-do-futebol/" target="_blank" rel="noopener">Mattos Filho</a> · <a href="https://www.machadomeyer.com.br/pt/inteligencia-juridica/publicacoes-ij/direito-digital/fan-token-quanto-vale-o-sentimento-de-um-torcedor" target="_blank" rel="noopener">Machado Meyer</a></p>
   </div>
 </section>
 

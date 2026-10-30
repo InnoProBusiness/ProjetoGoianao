@@ -235,8 +235,10 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-vis
 .bw-head{padding:18px 18px 6px;display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
 .bw-head h3{font-family:var(--d);text-transform:uppercase;font-size:clamp(22px,3vw,30px);line-height:1}
 .bw-filter{display:flex;gap:6px;flex-wrap:wrap}
-.bw-filter span{border:1px solid #333;border-radius:99px;padding:5px 10px;font-size:12px;font-weight:700;color:#bbb}
-.bw-filter span.on{background:#F3F2EF;color:#111;border-color:#F3F2EF}
+.bw-filter button{background:none;border:1px solid #333;border-radius:99px;padding:5px 10px;font-size:12px;font-weight:700;color:#bbb}
+.bw-filter button.on{background:#F3F2EF;color:#111;border-color:#F3F2EF}
+.pcard[hidden]{display:none}
+.roster-empty{color:#9c9c97;font-size:14px;padding:30px 4px;grid-column:1/-1}
 .roster{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(190px,1fr);gap:12px;padding:14px 18px 18px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 @media(min-width:1000px){.roster{grid-auto-flow:row;grid-template-columns:repeat(5,1fr);overflow:visible}}
 .pcard{scroll-snap-align:start;background:#151515;border:1px solid #262626;border-radius:14px;overflow:hidden;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .15s,border-color .15s}
@@ -731,17 +733,18 @@ blockquote{border-left-color:var(--gold)}
     <span class="eyebrow">09 · O site do clube</span>
     <h2 class="h2">Assim o elenco aparece no site</h2>
     <p class="lead">Cada reforço ganha arte de anúncio, card no elenco e ficha própria. Toque em um jogador para ver a arte inteira.</p>
-    <span class="tag ex">EXEMPLO · simulação da página Elenco · nomes e posições a preencher</span>
+    <span class="tag ex">EXEMPLO · simulação da página Elenco</span>
     <div class="bw">
       <div class="bw-chrome"><i></i><i></i><i></i><div class="bw-url">🔒 sonschurchfc.com.br/elenco</div></div>
       <div class="bw-nav"><div class="lg"><img src="/img/crsc.webp" alt="">Sons Church FC</div><nav><span>Notícias</span><b>Elenco</b><span>Jogos</span><span>Sócio</span><span>Loja</span><span>Transparência</span></nav><span class="bw-cta">SEJA SÓCIO</span></div>
-      <div class="bw-head"><h3>Elenco 2027</h3><div class="bw-filter"><span class="on">Todos</span><span>Goleiros</span><span>Defesa</span><span>Meio</span><span>Ataque</span></div></div>
+      <div class="bw-head"><h3>Elenco 2027</h3><div class="bw-filter" id="rosterFilter"><button type="button" class="on" data-f="todos">Todos</button><button type="button" data-f="goleiro">Goleiros</button><button type="button" data-f="defesa">Defesa</button><button type="button" data-f="meio">Meio</button><button type="button" data-f="ataque">Ataque</button></div></div>
       <div class="roster" data-noswipe>
-        <button class="pcard" data-i="0"><img src="/img/reforco-1.webp" alt="Arte de boas-vindas: reforço com o punho no peito, camisa branca C.R.S.C"><div><small>Novo reforço</small><b>[Nome do jogador]</b><span>[Posição] · #[nº]</span></div></button>
-        <button class="pcard" data-i="1"><img src="/img/reforco-2.webp" alt="Arte Here We Go: reforço de óculos e braços cruzados, camisa C.R.S.C"><div><small>Novo reforço</small><b>[Nome do jogador]</b><span>[Posição] · #[nº]</span></div></button>
-        <button class="pcard" data-i="2"><img src="/img/reforco-3.webp" alt="Arte Here We Go: reforço sorrindo de braços abertos, camisa C.R.S.C"><div><small>Novo reforço</small><b>[Nome do jogador]</b><span>[Posição] · #[nº]</span></div></button>
-        <button class="pcard" data-i="3"><img src="/img/reforco-4.webp" alt="Arte Bem-vindo ao nosso time: reforço sorrindo de braços cruzados"><div><small>Novo reforço</small><b>[Nome do jogador]</b><span>[Posição] · #[nº]</span></div></button>
-        <button class="pcard" data-i="4"><img src="/img/reforco-5.webp" alt="Arte Bem-vindo: reforço de óculos escuros e braços cruzados"><div><small>Novo reforço</small><b>[Nome do jogador]</b><span>[Posição] · #[nº]</span></div></button>
+        <button class="pcard" data-i="0" data-g="meio"><img src="/img/reforco-1.webp" alt="Leonardo, camisa 10, meia. Arte de boas-vindas: reforço com o punho no peito, camisa branca C.R.S.C"><div><small>Novo reforço · #10</small><b>Leonardo</b><span>Meia</span></div></button>
+        <button class="pcard" data-i="1" data-g="defesa"><img src="/img/reforco-2.webp" alt="João Pedro, camisa 2, zagueiro. Arte Here We Go: reforço de óculos e braços cruzados, camisa C.R.S.C"><div><small>Novo reforço · #2</small><b>João Pedro</b><span>Zagueiro</span></div></button>
+        <button class="pcard" data-i="2" data-g="meio"><img src="/img/reforco-3.webp" alt="Kaio, camisa 8, volante. Arte Here We Go: reforço sorrindo de braços abertos, camisa C.R.S.C"><div><small>Novo reforço · #8</small><b>Kaio</b><span>Volante</span></div></button>
+        <button class="pcard" data-i="3" data-g="defesa"><img src="/img/reforco-4.webp" alt="Sabino, camisa 4, lateral esquerdo. Arte Bem-vindo ao nosso time: reforço sorrindo de braços cruzados"><div><small>Novo reforço · #4</small><b>Sabino</b><span>Lateral esquerdo</span></div></button>
+        <p class="roster-empty" id="rosterEmpty" hidden>Nenhum goleiro anunciado ainda.</p>
+        <button class="pcard" data-i="4" data-g="ataque"><img src="/img/reforco-5.webp" alt="Mário, camisa 19, atacante ponta. Arte Bem-vindo: reforço de óculos escuros e braços cruzados"><div><small>Novo reforço · #19</small><b>Mário</b><span>Atacante ponta</span></div></button>
       </div>
     </div>
   </div>
@@ -1006,6 +1009,14 @@ blockquote{border-left-color:var(--gold)}
   lbx.addEventListener('click',function(e){if(e.target===lbx)lbx.hidden=true});
   addEventListener('keydown',function(e){if(lbx.hidden)return;e.stopImmediatePropagation();if(e.key==='Escape'){lbx.hidden=true;return}if(single)return;if(e.key==='ArrowRight')lshow(lk+1);if(e.key==='ArrowLeft')lshow(lk-1)},true);
   swipe(lbx,function(){lshow(lk+1)},function(){lshow(lk-1)},true);
+
+
+  // Roster filter
+  var rf=document.getElementById('rosterFilter');
+  if(rf){rf.querySelectorAll('button').forEach(function(b){b.onclick=function(){var f=b.dataset.f,n=0;
+    rf.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+    cards.forEach(function(c){var show=f==='todos'||c.dataset.g===f;c.hidden=!show;if(show)n++});
+    document.getElementById('rosterEmpty').hidden=n>0;}})}
 
   // Tabs (token/invest)
   document.querySelectorAll('.seg').forEach(function(seg){

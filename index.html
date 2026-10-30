@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Imersão Sons Church FC</title>
+<meta name="description" content="Do campo da igreja ao Goianão. Conheça o projeto e decida se entra na fundação do clube.">
+<meta property="og:title" content="Imersão · Sons Church FC">
+<meta property="og:description" content="Você está sendo convidado a fundar um clube de futebol.">
+<meta property="og:image" content="/img/time.webp">
+<meta name="theme-color" content="#0B0B0B">
+<link rel="icon" href="/img/crsc.webp">
+<style>
+@font-face{font-family:'Barlow Condensed';font-weight:700;font-display:swap;src:url(/fonts/barlow-condensed-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-weight:800;font-display:swap;src:url(/fonts/barlow-condensed-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-weight:400;font-display:swap;src:url(/fonts/barlow-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-weight:500;font-display:swap;src:url(/fonts/barlow-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-weight:600;font-display:swap;src:url(/fonts/barlow-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-weight:700 900;font-display:swap;src:url(/fonts/barlow-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Permanent Marker';font-weight:400;font-display:swap;src:url(/fonts/permanent-marker-latin-400-normal.woff2) format('woff2')}
+/* Carrossel em tela cheia: um capítulo por slide, setas fixas embaixo, slides claros e escuros alternados */
+:root{
+  --bk:#0B0B0B; --bk2:#151515; --bk3:#1E1E1E; --line:#2C2C2C;
+  --wh:#F4F2EC; --wh2:#E6E4DE; --paper:#FFFFFF; --lline:#DAD7CF;
+  --gr:#9C9C97; --grd:#5F5F5B; --ink:#121212; --inks:#4F4F4A;
+  --ok:#3FB37F; --warn:#E3A13A; --sim:#E8C977;
+  /* marca: preto do manto, branco do manto, dourado da coroa (até ~10% da tela) */
+  --gold:#D4A946; --gold2:#F2D58C; --goldd:#7E5C14; --goldline:rgba(212,169,70,.35);
+  --goldgrad:linear-gradient(100deg,#B8862A 0%,#F2D58C 45%,#D4A946 70%,#9C7220 100%);
+  --d:'Barlow Condensed','Oswald',Impact,'Arial Narrow',sans-serif; --b:'Barlow',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --brush:'Permanent Marker','Brush Script MT',cursive;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bk);color:var(--wh);font-family:var(--b);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+body{overflow:hidden}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer;color:inherit}
+a{color:inherit}
+
+/* chrome */
+.top{position:fixed;inset:0 0 auto 0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:calc(10px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));
+  background:linear-gradient(var(--bk) 55%,rgba(11,11,11,0))}
+.top.lt{background:linear-gradient(var(--wh) 55%,rgba(243,242,239,0));color:var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--d);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:15px;text-decoration:none}
+.brand img{height:36px;width:auto}
+@media(max-width:520px){.brand{font-size:13px;letter-spacing:.04em}.brand img{height:30px}.count{display:none}}
+.count{font-family:var(--d);font-size:14px;letter-spacing:.14em;color:var(--gr);font-variant-numeric:tabular-nums}
+.top.lt .count{color:var(--inks)}
+.menuBtn{background:transparent;border:1px solid currentColor;border-radius:99px;padding:7px 14px;font-size:13px;font-weight:700;opacity:.85}
+.drawer{position:fixed;z-index:40;inset:0 0 0 auto;width:min(380px,100%);background:#101010;border-left:1px solid #222;transform:translateX(100%);transition:transform .25s;overflow:auto;
+  padding:calc(64px + env(safe-area-inset-top,0px)) 12px 24px}
+.drawer.open{transform:none}
+.drawer button.it{display:flex;gap:14px;width:100%;text-align:left;background:none;border:0;padding:12px;border-radius:12px;color:#ddd;font-size:15px}
+.drawer button.it span{font-family:var(--d);color:var(--grd);width:26px;flex:none}
+.drawer button.it.on,.drawer button.it:hover{background:#1c1c1c;color:#fff}
+.drawer .x{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;background:#222;border:0;border-radius:99px;padding:8px 14px;font-weight:700;font-size:13px}
+
+.nav{position:fixed;inset:auto 0 0 0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px max(16px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  background:linear-gradient(rgba(11,11,11,0),var(--bk) 45%)}
+.nav.lt{background:linear-gradient(rgba(243,242,239,0),var(--wh) 45%);color:var(--ink)}
+.arrow{width:54px;height:54px;border-radius:50%;border:1px solid currentColor;background:transparent;display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform .15s,opacity .2s}
+.arrow.fill{background:var(--wh);color:var(--ink);border-color:var(--wh)}
+.nav.lt .arrow.fill{background:var(--ink);color:var(--wh);border-color:var(--ink)}
+.arrow:disabled{opacity:.25;cursor:default}
+.arrow:not(:disabled):active{transform:scale(.94)}
+.bar{flex:1;height:3px;background:rgba(127,127,127,.25);border-radius:3px;overflow:hidden;max-width:520px}
+.bar i{display:block;height:100%;background:currentColor;width:0;transition:width .4s}
+.navlabel{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.7;text-align:center;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mid{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0}
+.mid .bar{width:100%}
+
+/* deck */
+.deck{position:fixed;inset:0;overflow:hidden;touch-action:pan-y}
+.track{display:flex;height:100%;transition:transform .55s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.slide{flex:0 0 100%;min-width:0;width:100%;height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  padding:calc(78px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(120px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
+.slide.lt{background:var(--wh);color:var(--ink)}
+.inner{max-width:1120px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;justify-content:center;gap:28px}
+@media (prefers-reduced-motion:reduce){.track{transition:none}}
+
+/* type */
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gr)}
+.lt .eyebrow{color:var(--inks)}
+.h1{font-family:var(--d);font-weight:700;text-transform:uppercase;line-height:.95;font-size:clamp(46px,10.5vw,124px);text-wrap:balance}
+.h2{font-family:var(--d);font-weight:600;text-transform:uppercase;line-height:1.02;font-size:clamp(32px,6vw,64px);text-wrap:balance}
+.h3{font-family:var(--d);font-weight:600;text-transform:uppercase;line-height:1.1;font-size:clamp(20px,2.6vw,27px)}
+.lead{font-size:clamp(17px,2vw,21px);color:#CFCFCA;max-width:68ch}
+.lt .lead{color:var(--inks)}
+.muted{color:var(--gr)}
+.lt .muted{color:var(--inks)}
+.big{font-family:var(--d);text-transform:uppercase;font-weight:700;line-height:.98;font-size:clamp(38px,7.4vw,92px);text-wrap:balance}
+.tag{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;border:1px solid var(--line);border-radius:99px;padding:5px 12px;font-size:12px;font-weight:700;color:#CFCFCA}
+.lt .tag{border-color:#CBC8BF;color:var(--inks)}
+.tag.ex{background:#211a08;border-color:#5b4a1d;color:var(--sim)}
+.lt .tag.ex{background:#FFF4D6;border-color:#E2C987;color:#6A5212}
+
+/* blocks */
+.grid{display:grid;gap:16px}
+@media(min-width:780px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--bk2);border:1px solid var(--line);border-radius:18px;padding:22px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.lt .card{background:var(--paper);border-color:var(--lline)}
+.card.inv{background:var(--wh);color:var(--ink);border-color:var(--wh)}
+.lt .card.inv{background:var(--ink);color:var(--wh);border-color:var(--ink)}
+.card.inv .muted{color:var(--inks)}
+.lt .card.inv .muted{color:#bdbdb8}
+.stat{font-family:var(--d);font-size:clamp(42px,6vw,64px);font-weight:700;line-height:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--wh);color:var(--ink);border:0;border-radius:99px;padding:14px 24px;font-weight:800;font-size:15px;text-decoration:none}
+.btn.ghost{background:transparent;color:inherit;border:1px solid currentColor}
+.lt .btn{background:var(--ink);color:var(--wh)}
+.lt .btn.ghost{background:transparent;color:var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:16px}
+.lt .tbl{border-color:var(--lline);background:var(--paper)}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.lt th,.lt td{border-color:var(--lline)}
+th{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gr);font-weight:700}
+.lt th{color:var(--inks)}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td{font-weight:800;background:rgba(127,127,127,.08)}
+.est{font-size:11px;font-weight:800;letter-spacing:.08em;color:#6A5212;background:#FFF4D6;border:1px solid #E2C987;border-radius:6px;padding:1px 6px;margin-left:6px;white-space:nowrap}
+.src{font-size:12.5px}
+.src a{color:inherit}
+ol.steps{list-style:none;counter-reset:s;display:grid;gap:12px}
+ol.steps li{counter-increment:s;display:flex;gap:16px;align-items:flex-start}
+ol.steps li::before{content:counter(s);font-family:var(--d);font-weight:700;font-size:28px;line-height:1;min-width:28px;opacity:.45}
+ul.plain{list-style:none;display:grid;gap:8px}
+ul.plain li{padding-left:22px;position:relative}
+ul.plain li::before{content:"";position:absolute;left:0;top:.6em;width:12px;height:2px;background:currentColor;opacity:.5}
+ul.risk li::before{content:"!";background:none;top:0;width:auto;height:auto;font-weight:900;color:var(--warn);opacity:1}
+ul.ok li::before{content:"+";background:none;top:0;width:auto;height:auto;font-weight:900;color:var(--ok);opacity:1}
+
+/* hero */
+.hero{position:relative;background:var(--bk)}
+.hero .bg{position:absolute;inset:0;background:url(/img/time.webp) center 30%/cover no-repeat;filter:grayscale(1) contrast(1.1) brightness(.5)}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,.25),rgba(11,11,11,.65) 50%,#0B0B0B)}
+.hero .inner{position:relative;justify-content:flex-end}
+
+/* photos & placeholders */
+.photo{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#111}
+.photo img{width:100%;height:100%;object-fit:cover}
+.slot{border:2px dashed #45453F;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:22px;color:var(--gr);background:repeating-linear-gradient(135deg,rgba(255,255,255,.02) 0 12px,transparent 12px 24px);min-width:0}
+.lt .slot{border-color:#BDB9AE;color:var(--inks);background:repeating-linear-gradient(135deg,rgba(0,0,0,.025) 0 12px,transparent 12px 24px)}
+.slot b{font-family:var(--d);text-transform:uppercase;font-size:18px;letter-spacing:.04em;color:inherit}
+.slot small{font-size:12.5px;opacity:.85}
+.slot.phone{aspect-ratio:9/16;max-height:62vh;width:100%;max-width:300px;margin:0 auto;border-radius:34px}
+.slot.web{aspect-ratio:16/10;width:100%}
+.slot.portrait{aspect-ratio:4/5;width:100%}
+
+/* quote */
+blockquote{border-left:3px solid currentColor;padding:6px 0 6px 18px;font-size:clamp(18px,2.2vw,22px);line-height:1.5}
+blockquote footer{margin-top:10px;font-size:14px;font-weight:700;opacity:.75}
+
+/* kit carousel */
+.kc{position:relative;border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--lline)}
+.kc-track{display:flex;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.kc-item{flex:0 0 100%;position:relative}
+.kc-item{min-width:0;background:#ECEBE7}
+.kc-item img{width:100%;height:min(48vh,620px);object-fit:contain;margin:0 auto;background:#ECEBE7}
+.kc-item.colete img{object-fit:contain}
+.kc-cap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-top:1px solid var(--lline);flex-wrap:wrap}
+.kc-cap b{font-family:var(--d);text-transform:uppercase;font-size:20px;letter-spacing:.03em}
+.kc-btn{position:absolute;top:calc(50% - 56px);width:46px;height:46px;border-radius:50%;border:0;background:var(--ink);color:var(--wh);font-size:20px;display:flex;align-items:center;justify-content:center;opacity:.9}
+.kc-btn.p{left:10px}.kc-btn.n{right:10px}
+.kc-dots{display:flex;gap:6px}
+.kc-dots button{width:9px;height:9px;border-radius:50%;border:0;background:#CBC8BF;padding:0}
+.kc-dots button.on{background:var(--ink);width:22px;border-radius:9px}
+@media (prefers-reduced-motion:reduce){.kc-track{transition:none}}
+
+/* plans */
+.price{font-family:var(--d);font-size:40px;font-weight:700;line-height:1}
+.price small{font-family:var(--b);font-size:13px;font-weight:600;opacity:.7}
+.ribbon{align-self:flex-start;background:var(--ink);color:var(--wh);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:99px}
+.lt .card.inv .ribbon{background:var(--wh);color:var(--ink)}
+.goal{display:grid;gap:8px}
+.goal .track2{height:14px;border-radius:99px;background:rgba(127,127,127,.2);overflow:hidden}
+.goal .track2 i{display:block;height:100%;width:1.5%;background:var(--ok);border-radius:99px}
+
+/* split compare */
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:99px;background:var(--bk3);border:1px solid var(--line);align-self:flex-start}
+.lt .seg{background:#E8E6E0;border-color:#D4D1C8}
+.seg button{border:0;background:transparent;padding:9px 16px;border-radius:99px;font-weight:800;font-size:14px;color:var(--gr)}
+.lt .seg button{color:var(--inks)}
+.seg button.on{background:var(--wh);color:var(--ink)}
+.lt .seg button.on{background:var(--ink);color:var(--wh)}
+.pane[hidden]{display:none!important}
+
+/* faq */
+details{border-bottom:1px solid var(--lline);padding:16px 0}
+details:first-of-type{border-top:1px solid var(--lline)}
+summary{cursor:pointer;font-weight:800;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--d);font-size:22px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:var(--inks);max-width:70ch}
+
+/* form */
+form{display:grid;gap:16px}
+.field{display:grid;gap:6px;min-width:0}
+.field label,.lbl{font-size:14px;font-weight:700;color:#ddd}
+input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{width:100%;background:#111;border:1px solid #363636;color:#fff;border-radius:12px;padding:13px 14px;font:inherit;font-size:16px}
+textarea{min-height:90px;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.lt input:focus-visible,.lt button:focus-visible,.lt summary:focus-visible{outline-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{display:inline-flex;align-items:center;gap:8px;border:1px solid #3c3c3c;border-radius:99px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;color:#ddd}
+.chips input{accent-color:#fff}
+.chips label:has(input:checked){background:var(--wh);color:var(--ink);border-color:var(--wh)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#bdbdb8}
+.check input{margin-top:3px;accent-color:#fff;width:18px;height:18px;flex:none}
+.hp{position:absolute;left:-9999px}
+.msg{border-radius:12px;padding:14px 16px;font-size:15px}
+.msg.ok{background:#0f2a1d;border:1px solid #1f6b46;color:#c7f0dc}
+.msg.err{background:#2a1a0f;border:1px solid #7a4a1d;color:#f5d6b8}
+.hide{display:none!important}
+.formgrid{display:grid;gap:28px}
+@media(min-width:980px){.formgrid{grid-template-columns:1.25fr .75fr;align-items:start}}
+
+/* elenco mockup */
+.bw{display:block;width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--lline);background:#0B0B0B;color:#F3F2EF;box-shadow:0 30px 60px -30px rgba(0,0,0,.45)}
+.bw-chrome{display:flex;align-items:center;gap:8px;padding:9px 12px;background:#1b1b1b}
+.bw-chrome i{width:10px;height:10px;border-radius:50%;background:#444;display:block;flex:none}
+.bw-url{flex:1;min-width:0;background:#2a2a2a;color:#bbb;border-radius:8px;font-size:12px;padding:5px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bw-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid #222}
+.bw-nav .lg{display:flex;align-items:center;gap:10px;font-family:var(--d);text-transform:uppercase;letter-spacing:.06em;font-size:14px}
+.bw-nav .lg img{height:36px;width:auto}
+.bw-nav nav{display:none;gap:18px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#aaa}
+.bw-nav nav b{color:#D9B25A;border-bottom:2px solid #D9B25A;padding-bottom:3px}
+@media(min-width:780px){.bw-nav nav{display:flex}}
+.bw-cta{background:#D9B25A;color:#141008;border-radius:99px;padding:7px 12px;font-size:11px;font-weight:900;letter-spacing:.06em;white-space:nowrap}
+.bw-head{padding:18px 18px 6px;display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
+.bw-head h3{font-family:var(--d);text-transform:uppercase;font-size:clamp(22px,3vw,30px);line-height:1}
+.bw-filter{display:flex;gap:6px;flex-wrap:wrap}
+.bw-filter span{border:1px solid #333;border-radius:99px;padding:5px 10px;font-size:12px;font-weight:700;color:#bbb}
+.bw-filter span.on{background:#F3F2EF;color:#111;border-color:#F3F2EF}
+.roster{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(190px,1fr);gap:12px;padding:14px 18px 18px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+@media(min-width:1000px){.roster{grid-auto-flow:row;grid-template-columns:repeat(5,1fr);overflow:visible}}
+.pcard{scroll-snap-align:start;background:#151515;border:1px solid #262626;border-radius:14px;overflow:hidden;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .15s,border-color .15s}
+.pcard:hover{transform:translateY(-2px);border-color:#D9B25A}
+.pcard img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 18%}
+.pcard div{padding:10px 12px 12px;display:grid;gap:2px}
+.pcard small{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#D9B25A}
+.pcard b{font-family:var(--d);text-transform:uppercase;font-size:17px;letter-spacing:.02em;color:#F3F2EF}
+.pcard span{font-size:12.5px;color:#9c9c97}
+.lbx{position:fixed;inset:0;z-index:60;background:rgba(8,8,8,.98);display:flex;align-items:center;justify-content:center;gap:10px;padding:calc(60px + env(safe-area-inset-top,0px)) 12px calc(84px + env(safe-area-inset-bottom,0px))}
+.lbx[hidden]{display:none}
+.lbx img{max-height:100%;max-width:min(560px,100%);border-radius:12px;object-fit:contain}
+.lbx .x{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:12px;background:#222;border:0;color:#fff;border-radius:99px;padding:9px 15px;font-weight:800;font-size:13px}
+.lbx .nv{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom,0px));background:#222;border:0;color:#fff;width:50px;height:50px;border-radius:50%;font-size:20px}
+.lbx #lbxP{left:calc(50% - 62px)}.lbx #lbxN{left:calc(50% + 12px)}
+
+.shot{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#000;cursor:zoom-in}
+.shot img{width:100%;height:auto;max-height:58vh;object-fit:contain;margin:0 auto}
+.shot.phone{width:auto;max-width:100%;margin:0 auto;border-radius:28px}
+.shot.phone img{max-height:58vh;width:auto}
+
+.redes-txt{display:grid;gap:18px;min-width:0}
+.redes-shots{min-width:0}
+@media(min-width:980px){.inner.redes{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:40px}.inner.redes .shot img{max-height:72vh}.inner.redes .shot.phone img{max-height:72vh}}
+@media(min-width:980px){.inner.manto{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;column-gap:44px}.inner.manto>.eyebrow,.inner.manto>.h2,.inner.manto>.lead{grid-column:1}.inner.manto>.kc{grid-column:2;grid-row:1/span 3}.kc-item img{height:min(66vh,680px)}}
+
+/* ===== Identidade: preto, branco e dourado ===== */
+.h1,.h2,.h3,.big,.stat,.price,.brand,.count,.kc-cap b,.pcard b,.bw-head h3{font-family:var(--d)}
+.h1{font-weight:800;letter-spacing:-.005em;line-height:.92}
+.h2{font-weight:800;letter-spacing:.005em;line-height:.98}
+.h3{font-weight:700;letter-spacing:.01em}
+.big{font-weight:800}
+.stat,.price{font-weight:800}
+.eyebrow{color:var(--gold);letter-spacing:.24em}
+.lt .eyebrow{color:var(--goldd)}
+.brush{font-family:var(--brush);font-weight:400;text-transform:none;letter-spacing:0;line-height:1.05;background:var(--goldgrad);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;padding:.06em .12em .1em 0;display:inline-block}
+.lt .brush{background:linear-gradient(100deg,#7E5C14,#B8862A 50%,#7E5C14);-webkit-background-clip:text;background-clip:text}
+.rule{display:flex;align-items:center;gap:12px;color:var(--gold)}
+.rule::before,.rule::after{content:"";height:1px;flex:1;max-width:120px;background:currentColor;opacity:.6}
+.lt .rule{color:var(--goldd)}
+/* fundo escuro com luz dourada sutil */
+.slide:not(.lt):not(.hero){background:radial-gradient(1100px 600px at 85% -10%,rgba(212,169,70,.13),transparent 60%),radial-gradient(900px 500px at -10% 110%,rgba(212,169,70,.07),transparent 60%),var(--bk)}
+/* botões e navegação */
+.btn{background:var(--gold);color:#141008}
+.btn.ghost{color:var(--wh);border-color:rgba(244,242,236,.55)}
+.lt .btn{background:var(--ink);color:var(--wh)}
+.lt .btn.ghost{border-color:var(--ink)}
+.arrow.fill{background:var(--gold);color:#141008;border-color:var(--gold)}
+.nav.lt .arrow.fill{background:var(--ink);color:var(--gold2);border-color:var(--ink)}
+.bar i{background:var(--gold)}
+.nav.lt .bar i{background:var(--goldd)}
+.menuBtn{border-color:var(--goldline)}
+.top.lt .menuBtn{border-color:#BDB59F}
+/* cards */
+.card.inv{background:linear-gradient(160deg,#16120A,#0B0B0B 70%);color:var(--wh);border-color:var(--goldline)}
+.card.inv .muted{color:#C9C3B3}
+.lt .card.inv{background:var(--ink);color:var(--wh);border-color:var(--ink)}
+.lt .card.inv .h3,.card.inv .h3{color:var(--gold2)}
+.ribbon{background:var(--gold);color:#141008}
+.lt .card.inv .ribbon{background:var(--gold);color:#141008}
+.card .stat{color:inherit}
+.slide:not(.lt) .stat{background:var(--goldgrad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.seg button.on{background:var(--gold);color:#141008}
+.lt .seg button.on{background:var(--ink);color:var(--gold2)}
+.chips label:has(input:checked){background:var(--gold);color:#141008;border-color:var(--gold)}
+.chips input,.check input{accent-color:#D4A946}
+tr.tot td{color:inherit}
+.slide:not(.lt) tr.tot td:last-child{color:var(--gold2)}
+.kc-dots button.on{background:var(--goldd)}
+.goal .track2 i{background:var(--goldgrad)}
+ol.steps li::before{color:var(--gold);opacity:.9}
+.lt ol.steps li::before{color:var(--goldd)}
+blockquote{border-left-color:var(--gold)}
+/* capa */
+.hero .bg{filter:grayscale(1) contrast(1.15) brightness(.42)}
+.hero .bg::after{background:radial-gradient(900px 520px at 78% 30%,rgba(212,169,70,.22),transparent 65%),linear-gradient(180deg,rgba(11,11,11,.2),rgba(11,11,11,.7) 55%,#0B0B0B)}
+.crest-hero{position:absolute;right:max(4vw,16px);top:calc(90px + env(safe-area-inset-top,0px));width:clamp(110px,18vw,240px);filter:drop-shadow(0 18px 40px rgba(0,0,0,.6))}
+@media(max-width:700px){.crest-hero{position:static;width:96px;margin-bottom:-4px}}
+.hero .h1{font-size:clamp(46px,7.4vw,108px)}
+.hero-brush{font-size:clamp(30px,4.4vw,60px);margin-top:-8px}
+@media(min-width:701px){.hero .h1,.hero-brush{max-width:calc(100% - clamp(150px,20vw,270px))}}
+.motto{font-size:13px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#E9E3D3}
+.motto b{color:var(--gold);font-weight:700}
+
+/* cenário nome próprio */
+.idn{display:grid;gap:28px;align-items:center}
+@media(min-width:980px){.idn{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}}
+.namecard{display:flex;align-items:center;gap:18px;padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:var(--bk2)}
+.namecard img{height:78px;width:auto;flex:none}
+.namecard small{display:block;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.namecard b{display:block;font-family:var(--d);font-weight:800;text-transform:uppercase;font-size:clamp(24px,3vw,34px);line-height:1.05}
+.namecard span{font-size:14px;color:var(--gr)}
+.namecard.sp{border-color:var(--goldline);background:linear-gradient(120deg,rgba(212,169,70,.12),rgba(212,169,70,.02))}
+.namecard.sp img{filter:invert(1) brightness(1.05)}
+.kitmock{position:relative;width:100%;max-width:440px;margin:0 auto;aspect-ratio:400/440}
+.kitmock svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 30px 50px rgba(0,0,0,.55))}
+.kitmock .km-crest{position:absolute;left:58%;top:19%;width:15%}
+.kitmock .km-sons{position:absolute;left:36%;top:35%;width:28%;filter:invert(1)}
+.kitmock .km-sup{position:absolute;left:24%;top:23%;font-family:var(--d);font-weight:700;letter-spacing:.12em;font-size:clamp(10px,1.4vw,13px);color:#E9E5DA}
+.kitmock .km-tag{position:absolute;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);white-space:nowrap}
+.kitmock .km-tag::before{content:"";width:28px;height:1px;background:var(--gold)}
+.km-tag.t1{right:-26%;top:22%;flex-direction:row-reverse}.km-tag.t1::before{order:2}
+.km-tag.t2{left:50%;top:69%;transform:translateX(-50%);font-size:11px}.km-tag.t2::before{display:none}
+@media(max-width:560px){.kitmock .km-tag{display:none}}
+.cap-note{font-size:13px;color:var(--gr);text-align:center}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <button class="brand" data-go="0" style="background:none;border:0"><img src="/img/crsc.webp" alt="">Sons Church FC</button>
+  <span class="count" id="count">01 / 18</span>
+  <button class="menuBtn" id="menuBtn" aria-expanded="false" aria-controls="drawer">Capítulos</button>
+</header>
+<nav class="drawer" id="drawer" aria-label="Capítulos"><button class="x" id="drawerX">Fechar ✕</button><div id="drawerList"></div></nav>
+
+<main class="deck" id="deck">
+<div class="track" id="track">
+
+<!-- 00 CAPA -->
+<section class="slide hero" data-title="Capa" aria-label="Capa">
+  <div class="bg" role="img" aria-label="Foto do nosso time"></div>
+  <div class="inner">
+    <img class="crest-hero" src="/img/crsc.webp" alt="Escudo do clube: leão coroado, C.R.S.C, Cristo Reina Sons Church">
+    <span class="eyebrow">Imersão no projeto · Sons Church FC · 2026</span>
+    <h1 class="h1">Do campo da igreja ao Goianão</h1>
+    <p class="brush hero-brush">Mais que um time, uma família.</p>
+    <p class="motto">Disciplina <b>·</b> Amizade <b>·</b> Propósito</p>
+    <p class="lead">Você está sendo convidado a fundar um clube de futebol. Sem milionário por trás. Com quem joga, ora e trabalha junto toda semana, há três anos.</p>
+    <div class="row"><button class="btn" data-go="1">Começar a imersão →</button><button class="btn ghost" data-go="last">Já quero dar o meu sim</button></div>
+    <p class="muted" style="font-size:14px">Leva cerca de 10 minutos. Use as setas ou deslize para o lado. No fim, você decide se entra e como quer participar.</p>
+  </div>
+</section>
+
+<!-- 01 ORIGEM -->
+<section class="slide lt" data-title="A origem">
+  <div class="inner">
+    <span class="eyebrow">01 · A origem</span>
+    <h2 class="h2">Começou como um jogo. Virou caminho de volta.</h2>
+    <p class="lead">Há três anos, o futebol da Sons Church nasceu para reunir os irmãos uma vez por semana. Ninguém imaginava que a bola fosse trazer gente de volta para Deus. Mas trouxe.</p>
+    <div class="grid g3">
+      <div class="card"><div class="stat">3 anos</div><span class="muted">jogando toda semana</span></div>
+      <div class="card"><div class="stat">15+</div><span class="muted">jogadores confirmados</span></div>
+      <div class="card"><div class="stat">1</div><span class="muted">propósito: levar pessoas a Cristo</span></div>
+    </div>
+    <div class="photo" style="aspect-ratio:16/9;max-height:42vh"><img src="/img/time.webp" alt="Nosso time posando antes de um jogo"></div>
+  </div>
+</section>
+
+<!-- 02 NILSTON -->
+<section class="slide" data-title="A história do Nilston">
+  <div class="inner">
+    <span class="eyebrow">01 · A origem</span>
+    <div class="grid g2" style="align-items:center;gap:32px">
+      <div class="photo" style="aspect-ratio:4/5;max-height:62vh;max-width:460px;width:100%;justify-self:center"><img src="/img/nilston.webp" alt="Nilston sorrindo ao ar livre, de óculos e camiseta azul"></div>
+      <div style="display:grid;gap:22px;min-width:0">
+        <h2 class="h2">A história do Nilston</h2>
+        <blockquote>Nilston passou mais de 15 anos na Assembleia de Deus. Um dia, se afastou. Voltou a jogar bola com a gente e, no meio dos jogos de sábado e do projeto da Sons, encontrou o caminho de volta.</blockquote>
+        <blockquote>“Voltar a jogar bola e o projeto da Sons me fizeram retornar para os caminhos.”<footer>Nilston</footer></blockquote>
+        <p class="big" style="font-size:clamp(26px,3.6vw,40px)">O Nilston não é exceção. É o <span class="brush">motivo</span> de este clube existir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 QUEM CONDUZ -->
+<section class="slide lt" data-title="Quem conduz">
+  <div class="inner">
+    <span class="eyebrow">02 · Quem conduz</span>
+    <h2 class="h2">Um responsável com nome e rosto</h2>
+    <p class="lead">Leonardo Mendes é o fundador do projeto. Ele coordena as decisões e responde por elas, com uma equipe de confiança em cada área: esporte, marketing, finanças e relação com as igrejas.</p>
+    <div class="grid g3">
+      <div class="card"><span class="eyebrow">Quem decide</span><h3 class="h3">Leonardo Mendes</h3><span class="muted">Fundador do projeto</span></div>
+      <div class="card"><span class="eyebrow">Quem executa</span><h3 class="h3">Responsáveis por área</h3><span class="muted">Escolhidos entre jogadores e apoiadores</span></div>
+      <div class="card"><span class="eyebrow">Quem fiscaliza</span><h3 class="h3">Todos</h3><span class="muted">Prestação de contas mensal e aberta</span></div>
+    </div>
+    <p class="big" style="font-size:clamp(26px,4vw,46px)">Projeto sério tem dono. Projeto transparente mostra quem é.</p>
+  </div>
+</section>
+
+<!-- 04 VISAO -->
+<section class="slide" data-title="A visão">
+  <div class="inner">
+    <span class="eyebrow">03 · A visão</span>
+    <h2 class="h2">Um degrau de cada vez</h2>
+    <p class="lead">Ninguém vira profissional na semana que vem. O plano tem três degraus, e cada um prepara o próximo.</p>
+    <div class="grid g3">
+      <div class="card"><span class="eyebrow">Agora</span><h3 class="h3">Amistosos que viram conteúdo</h3><span class="muted">Um jogo por semana. Cada jogo gera vídeo, bastidor e história. A torcida nasce antes do primeiro campeonato.</span></div>
+      <div class="card"><span class="eyebrow">Próximo</span><h3 class="h3">Torneios e municipal</h3><span class="muted">Resultado em campo, histórico e material para mostrar a patrocinadores.</span></div>
+      <div class="card"><span class="eyebrow">Meta</span><h3 class="h3">Filiação e Goianão</h3><span class="muted">Filiar o clube na Federação Goiana e disputar a 3ª Divisão do Campeonato Goiano.</span></div>
+    </div>
+    <p class="big" style="font-size:clamp(24px,3.6vw,40px)">Cada degrau só começa quando o anterior estiver pago.</p>
+  </div>
+</section>
+
+<!-- 05 CLUBES 2026 -->
+<section class="slide lt" data-title="Clubes de 2026">
+  <div class="inner">
+    <span class="eyebrow">04 · Clubes de 2026</span>
+    <h2 class="h2">Os clubes novos chegaram com milhões</h2>
+    <p class="lead">Olhamos para quem nasceu ou renasceu em 2026. Todos tinham uma coisa em comum: dinheiro grande desde o primeiro dia.</p>
+    <div class="tbl"><table>
+      <tr><th style="width:20%">Clube</th><th>Como começou</th><th class="n">Investimento</th></tr>
+      <tr><td><b>Feira FC</b> · BA</td><td>Nasceu como SAF, cerca de 60 mil seguidores na 1ª semana, contratou ex-Seleção e influenciador</td><td class="n">Até R$ 20 mi em 3 anos</td></tr>
+      <tr><td><b>Agro EC</b> · GO</td><td>Investidores do agro se fundiram à Abecat e herdaram a vaga na Série D</td><td class="n">Cerca de R$ 11 mi imediatos</td></tr>
+      <tr><td><b>Centro Oeste</b> · GO</td><td>Clube inativo comprado e transformado em SAF, subiu até a elite do Goianão 2026</td><td class="n">Investidor privado</td></tr>
+    </table></div>
+    <p class="muted src">Fontes: <a href="https://jornalgrandebahia.com.br/2026/03/feira-fc-aposta-em-inovacao-marketing-digital-e-engajamento-popular-para-consolidar-novo-projeto-esportivo-em-feira-de-santana/" target="_blank" rel="noopener">Jornal Grande Bahia</a> · <a href="https://tribunadoplanalto.com.br/saf-transforma-a-abecat-em-agro-esporte-clube/" target="_blank" rel="noopener">Tribuna do Planalto</a> · <a href="https://ohoje.com/2025/08/07/centro-oeste-estreia-goianao-ambicao-nacional/" target="_blank" rel="noopener">O Hoje</a></p>
+  </div>
+</section>
+
+<!-- 06 VIRADA -->
+<section class="slide" data-title="A nossa diferença">
+  <div class="inner">
+    <p class="big">Eles começaram com milhões.<br>Nós começamos com <span class="brush">propósito.</span></p>
+    <div class="grid g3">
+      <div class="card"><h3 class="h3">Redes desde o dia 1</h3><span class="muted">A torcida nasce antes do primeiro jogo oficial.</span></div>
+      <div class="card"><h3 class="h3">Visibilidade com gestão</h3><span class="muted">Visibilidade sem gestão não dura. Por isso a prestação de contas é aberta.</span></div>
+      <div class="card"><h3 class="h3">Dono da história</h3><span class="muted">Quem apoia no começo vira dono da história. Esse é o nosso maior ativo.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 CENARIOS -->
+<section class="slide lt" data-title="Os dois cenários">
+  <div class="inner">
+    <span class="eyebrow">05 · Os dois cenários</span>
+    <h2 class="h2">Dois caminhos. A decisão é do grupo.</h2>
+    <p class="lead">O modelo jurídico define como o clube recebe dinheiro, quem decide e quem pode ganhar se o clube crescer. Compare antes de votar.</p>
+    <div class="tbl"><table>
+      <tr><th style="width:22%"></th><th>Cenário 1 · SAF (clube-empresa)</th><th>Cenário 2 · Projeto da igreja (associação)</th></tr>
+      <tr><td><b>O que é</b></td><td>Uma empresa do futebol, com sócios e regras claras</td><td>Uma associação sem fins lucrativos, apoiada pela igreja</td></tr>
+      <tr><td><b>Quem decide</b></td><td>Leonardo Mendes, com 70% ou mais da SAF</td><td>A diretoria da associação, ligada à igreja</td></tr>
+      <tr><td><b>Quem pode ter participação</b></td><td>Investidores-apoiadores, até 30% da SAF, por oferta regulada pela CVM</td><td>Ninguém. Apoiador doa ou patrocina, mas não vira sócio</td></tr>
+      <tr><td><b>Como capta dinheiro</b></td><td>Sócio-torcedor, patrocínio e investimento regulado</td><td>Sócio-torcedor, patrocínio e doações</td></tr>
+      <tr><td><b>Velocidade</b></td><td>Mais rápida para captar e contratar</td><td>Mais lenta, depende de doações</td></tr>
+      <tr><td><b>Ponto de atenção</b></td><td>Exige contador, advogado e governança desde o início</td><td>Pode parecer “o time de uma igreja só” para outras igrejas</td></tr>
+    </table></div>
+    <p class="muted" style="font-size:14px">Os 30% são o teto proposto. O percentual final depende de quanto for captado e do valor da SAF, e será definido com advogado.</p>
+    <div class="card" style="flex-direction:row;align-items:center;gap:18px;flex-wrap:wrap">
+      <img src="/img/crsc.webp" alt="Escudo C.R.S.C com leão coroado" style="width:84px">
+      <div style="flex:1;min-width:220px"><span class="eyebrow">E o nome do clube?</span><p style="margin-top:4px">Também são dois caminhos, e o escudo do leão vale para os dois. <b>Opção 1:</b> o clube se chama Sons Church FC. <b>Opção 2:</b> o clube ganha nome próprio e a Sons Church vira a patrocinadora master. Veja a opção 2 nos próximos slides.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 07b NOME PROPRIO -->
+<section class="slide" data-title="Opção 2: nome próprio">
+  <div class="inner">
+    <span class="eyebrow">05 · Os dois cenários · o nome</span>
+    <div class="idn">
+      <div style="display:grid;gap:20px;min-width:0">
+        <h2 class="h2" style="font-size:clamp(32px,4.4vw,56px)">Nome próprio. A Sons como <span class="brush">patrocinadora master.</span></h2>
+        <p class="lead">Nesta opção, o clube ganha um nome só dele e veste o escudo do leão. A Sons Church entra como patrocinadora principal: o coração aparece no centro da camisa, no site e em todo vídeo.</p>
+        <div class="namecard"><img src="/img/crsc.webp" alt="Escudo do leão coroado"><div><small>O clube · nome provisório</small><b>Cristo Reina FC</b><span>Escudo do leão coroado</span></div></div>
+        <div class="namecard sp"><img src="/img/sons-full.webp" alt="Logo da Sons Church: coração formado por duas pessoas"><div><small>Patrocinadora master</small><b>Sons Church</b><span>A igreja onde o projeto nasceu</span></div></div>
+      </div>
+      <div style="display:grid;gap:10px;min-width:0">
+        <div class="kitmock" role="img" aria-label="Camisa preta com o escudo do leão no peito e o logo da Sons Church grande no centro, como patrocinadora master">
+          <svg viewBox="0 0 400 440" aria-hidden="true">
+            <defs><linearGradient id="jg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#1c1c1c"/><stop offset="1" stop-color="#070707"/></linearGradient></defs>
+            <path d="M128 18 L160 6 Q200 34 240 6 L272 18 L352 58 L392 132 L338 160 L316 128 L316 430 L84 430 L84 128 L62 160 L8 132 L48 58 Z" fill="url(#jg)" stroke="#F4F2EC" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M160 6 Q200 40 240 6" fill="none" stroke="#F4F2EC" stroke-width="9"/>
+            <path d="M338 160 L392 132 L384 116 L330 144 Z M62 160 L8 132 L16 116 L70 144 Z" fill="#F4F2EC"/>
+            <path d="M84 392 L316 318 L316 338 L84 412 Z" fill="#D4A946" opacity=".9"/>
+          </svg>
+          <span class="km-sup">CRISTO REINA FC</span>
+          <img class="km-crest" src="/img/crsc.webp" alt="">
+          <img class="km-sons" src="/img/sons-full.webp" alt="">
+          <span class="km-tag t1">Escudo do clube</span>
+          <span class="km-tag t2">Patrocinadora master</span>
+        </div>
+        <p class="cap-note">Ilustração · o anel do escudo passa a trazer o nome novo do clube</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07c COMPARA NOME -->
+<section class="slide lt" data-title="Qual nome escolher">
+  <div class="inner">
+    <span class="eyebrow">05 · Os dois cenários · o nome</span>
+    <h2 class="h2">Sons Church FC ou nome próprio?</h2>
+    <div class="tbl"><table>
+      <tr><th style="width:22%"></th><th>Opção 1 · Sons Church FC</th><th>Opção 2 · Nome próprio + Sons patrocinadora</th></tr>
+      <tr><td><b>Nome</b></td><td>Sons Church FC</td><td>Nome só do clube (provisório: Cristo Reina FC)</td></tr>
+      <tr><td><b>Escudo</b></td><td>Leão coroado, C.R.S.C</td><td>Leão coroado, com o nome novo no anel</td></tr>
+      <tr><td><b>Papel da Sons</b></td><td>A marca do clube é a marca da igreja</td><td>Patrocinadora master, com contrato e contrapartidas</td></tr>
+      <tr><td><b>Onde a Sons aparece</b></td><td>No nome, no escudo e em tudo</td><td>Centro da camisa, site, vídeos, entrevistas e placa no campo</td></tr>
+      <tr><td><b>Outras igrejas</b></td><td>Podem hesitar em apoiar o time de outra igreja</td><td>Entram como parceiras sem conflito</td></tr>
+      <tr><td><b>Se a relação mudar</b></td><td>O clube precisa trocar de nome</td><td>Muda o patrocínio, o clube continua</td></tr>
+    </table></div>
+    <div class="card" style="gap:6px"><span class="eyebrow">O que a Sons recebe como patrocinadora master</span>
+      <p>Logo no centro de todos os uniformes · destaque no site e em todo vídeo · menção em entrevistas e posts de jogo · um jogo seguido de culto na Sons por temporada · prestação de contas mensal do que foi feito com o apoio.</p></div>
+  </div>
+</section>
+
+<!-- 08 CUSTOS: EQUIPAR -->
+<section class="slide" data-title="Do que precisamos">
+  <div class="inner">
+    <span class="eyebrow">06 · Do que precisamos</span>
+    <h2 class="h2">Quanto custa o primeiro ano</h2>
+    <p class="lead">Hoje jogamos com material emprestado e cada um paga do próprio bolso. O primeiro ano custa cerca de <b style="color:var(--wh)">R$ 59 mil</b>, sem contar a filiação. Começa por equipar o time.</p>
+    <div class="tbl"><table>
+      <tr><th>Para equipar o time (uma vez só)</th><th>Conta</th><th class="n">Valor</th></tr>
+      <tr><td>Uniformes completos</td><td>20 atletas × 2 jogos (claro e escuro) × R$ 119</td><td class="n">R$ 4.760</td></tr>
+      <tr><td>Coletes de treino</td><td>20 × R$ 35 <span class="est">ESTIMATIVA</span></td><td class="n">R$ 700</td></tr>
+      <tr><td>Bolas oficiais</td><td>4 × R$ 150 <span class="est">ESTIMATIVA</span></td><td class="n">R$ 600</td></tr>
+      <tr><td>Primeiros socorros e gelo</td><td>kit inicial <span class="est">ESTIMATIVA</span></td><td class="n">R$ 250</td></tr>
+      <tr><td>Garrafões e squeezes</td><td>kit inicial <span class="est">ESTIMATIVA</span></td><td class="n">R$ 200</td></tr>
+      <tr><td>Empresa, contador inicial e registro da marca</td><td>abertura + INPI <span class="est">ESTIMATIVA</span></td><td class="n">R$ 2.900</td></tr>
+      <tr class="tot"><td>Total para começar</td><td></td><td class="n">R$ 9.410</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<!-- 09 CUSTOS: JOGO E ANO -->
+<section class="slide" data-title="O custo da temporada">
+  <div class="inner">
+    <span class="eyebrow">06 · Do que precisamos</span>
+    <div class="grid g2" style="align-items:start">
+      <div class="tbl"><table style="min-width:0">
+        <tr><th>Por amistoso</th><th class="n">Valor</th></tr>
+        <tr><td>Transporte <span class="est">ESTIMATIVA</span></td><td class="n">R$ 300</td></tr>
+        <tr><td>Alimentação pós-jogo (20 × R$ 15) <span class="est">ESTIMATIVA</span></td><td class="n">R$ 300</td></tr>
+        <tr><td>Hidratação: água, isotônico e gelo <span class="est">ESTIMATIVA</span></td><td class="n">R$ 80</td></tr>
+        <tr><td>Lavagem dos uniformes <span class="est">ESTIMATIVA</span></td><td class="n">R$ 60</td></tr>
+        <tr><td>Arbitragem, nossa parte <span class="est">ESTIMATIVA</span></td><td class="n">R$ 150</td></tr>
+        <tr class="tot"><td>Total por jogo</td><td class="n">R$ 890</td></tr>
+      </table></div>
+      <div class="tbl"><table style="min-width:0">
+        <tr><th>O ano inteiro</th><th class="n">Valor</th></tr>
+        <tr><td>Equipar o time</td><td class="n">R$ 9.410</td></tr>
+        <tr><td>Jogos: 4 por mês × R$ 890 × 12</td><td class="n">R$ 42.720</td></tr>
+        <tr><td>Contador: R$ 400 × 12 <span class="est">ESTIMATIVA</span></td><td class="n">R$ 4.800</td></tr>
+        <tr><td>Torneios: 3 × R$ 800 <span class="est">ESTIMATIVA</span></td><td class="n">R$ 2.400</td></tr>
+        <tr class="tot"><td>Total do 1º ano</td><td class="n">R$ 59.330</td></tr>
+      </table></div>
+    </div>
+    <p class="muted" style="font-size:14px">Fora da conta: aluguel de campo (zero se a prefeitura ceder o espaço, ou cerca de R$ 250 por jogo) e a filiação na Federação Goiana (valor a consultar).</p>
+  </div>
+</section>
+
+<!-- 10 META -->
+<section class="slide lt" data-title="A meta">
+  <div class="inner">
+    <span class="eyebrow">06 · Do que precisamos</span>
+    <p class="big"><span class="brush">200 pessoas</span><br>pagam a nossa temporada.</p>
+    <p class="lead">200 apoiadores a R$ 19,90 por mês somam R$ 3.980. É o que custa um mês inteiro de jogos e contador.</p>
+    <div class="card goal">
+      <div class="row" style="justify-content:space-between"><b>Primeira meta: equipar o time</b><b style="font-variant-numeric:tabular-nums">R$ 0 de R$ 9.410</b></div>
+      <div class="track2" role="progressbar" aria-valuemin="0" aria-valuemax="9410" aria-valuenow="0" aria-label="Progresso da primeira meta"><i></i></div>
+      <span class="muted" style="font-size:13.5px">Atualizada todo mês junto com a prestação de contas.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 11 MANTO -->
+<section class="slide lt" data-title="O manto">
+  <div class="inner manto" style="gap:20px">
+    <span class="eyebrow">07 · O manto</span>
+    <h2 class="h2">Preto e branco. Simples e forte.</h2>
+    <p class="lead">O símbolo da Sons Church são duas pessoas formando um coração. É isso que levamos no peito: gente que se encontra e se cuida.</p>
+    <div class="kc" id="kc" aria-roledescription="carrossel" aria-label="Propostas de uniforme">
+      <div class="kc-track" id="kcTrack">
+        <div class="kc-item"><img src="/img/manto-a-escuro.webp" alt="Modelo A Escuro: frente, costas e detalhes do uniforme"></div>
+        <div class="kc-item"><img src="/img/manto-a-claro.webp" alt="Modelo A Claro: frente, costas e detalhes do uniforme"></div>
+        <div class="kc-item"><img src="/img/manto-c-escuro.webp" alt="Modelo C Escuro: frente, costas e detalhes do uniforme"></div>
+        <div class="kc-item"><img src="/img/manto-c-claro.webp" alt="Modelo C Claro: frente, costas e detalhes do uniforme"></div>
+        <div class="kc-item"><img src="/img/manto-d-pinceladas.webp" alt="Modelo D Pinceladas: frente, costas e detalhes do uniforme"></div>
+        <div class="kc-item"><img src="/img/manto-coletes.webp" alt="Coletes de treino dupla face, preto e branco, com o símbolo da Sons Church"></div>
+
+      </div>
+      <button class="kc-btn p" id="kcPrev" aria-label="Uniforme anterior">←</button>
+      <button class="kc-btn n" id="kcNext" aria-label="Próximo uniforme">→</button>
+      <div class="kc-cap"><div><b id="kcName">Modelo A Escuro</b><div class="muted" style="font-size:13px" id="kcCount">1 de 6 · propostas · toque nas setas · a escolha final vai para votação</div></div><div class="kc-dots" id="kcDots"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 REDES -->
+<section class="slide" data-title="Nossas redes">
+  <div class="inner redes">
+    <div class="redes-txt"><span class="eyebrow">08 · Nossas redes</span>
+    <h2 class="h2">Cada jogo vira história</h2>
+    <p class="lead">O YouTube conta a história completa. Instagram e TikTok levam os melhores momentos para mais gente. O X reúne a comunidade e presta contas.</p>
+    <span class="tag ex">EXEMPLO · simulação · números são a meta para 12 meses</span>
+    <div class="seg" role="tablist" aria-label="Redes sociais">
+      <button class="on" role="tab" aria-selected="true" data-pane="r-ig">Instagram</button>
+      <button role="tab" aria-selected="false" data-pane="r-tt">TikTok</button>
+      <button role="tab" aria-selected="false" data-pane="r-yt">YouTube</button>
+      <button role="tab" aria-selected="false" data-pane="r-x">X</button>
+    </div>
+    <p class="muted" style="font-size:13.5px">Toque na tela para ampliar.</p></div>
+    <div class="redes-shots">
+    <div class="pane" id="r-ig"><button class="shot zoomable phone"><img src="/img/rede-instagram.webp" alt="Simulação do perfil @sonschurch.fc no Instagram, com destaques e grade de posts"></button></div>
+    <div class="pane" id="r-tt" hidden><button class="shot zoomable phone"><img src="/img/rede-tiktok.webp" alt="Simulação do perfil sonschurch.fc no TikTok, com o vídeo Vem comigo num dia de jogo em destaque"></button></div>
+    <div class="pane" id="r-yt" hidden><button class="shot zoomable"><img src="/img/rede-youtube.webp" alt="Simulação do canal Sons Church FC no YouTube, com vídeos Nossa história, Treino em foco, Dia de jogo, Nosso uniforme e Fé, família e futebol"></button></div>
+    <div class="pane" id="r-x" hidden><button class="shot zoomable"><img src="/img/rede-x.webp" alt="Simulação do perfil @sonschurch_fc no X, com post fixado e assuntos do momento"></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 MOTOR DE CONTEUDO -->
+<section class="slide" data-title="Motor de conteúdo">
+  <div class="inner">
+    <span class="eyebrow">08 · Nossas redes</span>
+    <h2 class="h2">Um jogo, seis conteúdos</h2>
+    <div class="grid g3">
+      <div class="card"><h3 class="h3">O vlog do dia de jogo</h3><span class="muted">Em cada jogo, um jogador grava o “Vem comigo”: quem ele é, o que faz e por que entrou no projeto.</span></div>
+      <div class="card"><h3 class="h3">4 vlogs e 20 cortes por mês</h3><span class="muted">Um vídeo longo no YouTube e pelo menos cinco cortes por jogo, sem pagar produtora.</span></div>
+      <div class="card"><h3 class="h3">Vitrine para quem trabalha</h3><span class="muted">O público conhece pessoas reais, e o trabalho de cada um aparece com crédito e contato.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 SITE -->
+<section class="slide lt" data-title="O site do clube">
+  <div class="inner" style="gap:20px">
+    <span class="eyebrow">09 · O site do clube</span>
+    <h2 class="h2">A casa oficial do Sons</h2>
+    <p class="lead">Notícias, elenco, jogos, sócio-torcedor, loja e prestação de contas no mesmo lugar. Toque na imagem para ampliar.</p>
+    <span class="tag ex">EXEMPLO · simulação da página inicial · jogos, notícias e patrocinadores ilustrativos</span>
+    <button class="bw zoomable" data-src="/img/site-home.webp" style="padding:0;text-align:left;cursor:zoom-in">
+      <div class="bw-chrome"><i></i><i></i><i></i><div class="bw-url">🔒 sonschurchfc.com.br</div></div>
+      <img src="/img/site-home.webp" alt="Simulação da página inicial do site Sons Church FC: destaque “Mais que um time, uma família”, próximo jogo, últimas notícias, vídeo, elenco, sócio-torcedor e patrocinadores" style="width:100%;max-height:60vh;aspect-ratio:1586/992;object-fit:contain;background:#0B0B0B">
+    </button>
+  </div>
+</section>
+
+<!-- 14b REFORCO -->
+<section class="slide" data-title="Como anunciamos um reforço">
+  <div class="inner">
+    <span class="eyebrow">09 · O site do clube</span>
+    <h2 class="h2">Como anunciamos um reforço</h2>
+    <div class="grid g4">
+      <div class="card"><span class="eyebrow">1 · 24h antes</span><h3 class="h3">Teaser</h3><span class="muted">“Alguém está chegando… Ele vem para o ataque. Palpites nos comentários.”</span></div>
+      <div class="card"><span class="eyebrow">2 · O dia</span><h3 class="h3">Revelação</h3><span class="muted">Arte “Here we go” ou “Bem-vindo” com o jogador vestindo o manto.</span></div>
+      <div class="card"><span class="eyebrow">3 · No site</span><h3 class="h3">Card e ficha</h3><span class="muted">Posição, número, idade, igreja, profissão e uma frase dele.</span></div>
+      <div class="card"><span class="eyebrow">4 · A torcida</span><h3 class="h3">Camisa e vlog</h3><span class="muted">Camisa com nome e número na loja e vlog de boas-vindas.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 15b ELENCO NO SITE -->
+<section class="slide lt" data-title="Elenco no site">
+  <div class="inner" style="gap:20px">
+    <span class="eyebrow">09 · O site do clube</span>
+    <h2 class="h2">Assim o elenco aparece no site</h2>
+    <p class="lead">Cada reforço ganha arte de anúncio, card no elenco e ficha própria. Toque em um jogador para ver a arte inteira.</p>
+    <span class="tag ex">EXEMPLO · simulação da página Elenco · nomes e posições a preencher</span>
+    <div class="bw">
+      <div class="bw-chrome"><i></i><i></i><i></i><div class="bw-url">🔒 sonschurchfc.com.br/elenco</div></div>
+      <div class="bw-nav"><div class="lg"><img src="/img/crsc.webp" alt="">Sons Church FC</div><nav><span>Notícias</span><b>Elenco</b><span>Jogos</span><span>Sócio</span><span>Loja</span><span>Transparência</span></nav><span class="bw-cta">SEJA SÓCIO</span></div>
+      <div class="bw-head"><h3>Elenco 2027</h3><div class="bw-filter"><span class="on">Todos</span><span>Goleiros</span><span>Defesa</span><span>Meio</span><span>Ataque</span></div></div>
+      <div class="roster" data-noswipe>
+        <button class="pcard" data-i="0"><img src="/img/reforco-1.webp" alt="Arte de boas-vindas: reforço com o punho no peito, camisa branca C.R.S.C"><div><small>Novo reforço</small><b>[Nome do jogador]</b><span>[Posição] · #[nº]</span></div></button>
+        <button class="pcard" data-i="1"><img src="/img/reforco-2.webp" alt="Arte Here We Go: reforço de óculos e braços cruzados, camisa C.R.S.C"><div><small>Novo reforço</small><b>[Nome do jogador]</b><span>[Posição] · #[nº]</span></div></button>
+        <button class="pcard" data-i="2"><img src="/img/reforco-3.webp" alt="Arte Here We Go: reforço sorrindo de braços abertos, camisa C.R.S.C"><div><small>Novo reforço</small><b>[Nome do jogador]</b><span>[Posição] · #[nº]</span></div></button>
+        <button class="pcard" data-i="3"><img src="/img/reforco-4.webp" alt="Arte Bem-vindo ao nosso time: reforço sorrindo de braços cruzados"><div><small>Novo reforço</small><b>[Nome do jogador]</b><span>[Posição] · #[nº]</span></div></button>
+        <button class="pcard" data-i="4"><img src="/img/reforco-5.webp" alt="Arte Bem-vindo: reforço de óculos escuros e braços cruzados"><div><small>Novo reforço</small><b>[Nome do jogador]</b><span>[Posição] · #[nº]</span></div></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 SOCIO -->
+<section class="slide lt" data-title="Sócio-torcedor">
+  <div class="inner">
+    <span class="eyebrow">10 · Sócio-torcedor fundador</span>
+    <h2 class="h2">Quem assina agora é fundador para sempre</h2>
+    <p class="lead">O sócio-torcedor é uma assinatura com benefícios. Ele não compra parte do clube. Compra lugar na história: o nome dos primeiros sócios fica no mural de fundadores.</p>
+    <span class="tag">Proposta · valores a validar com o grupo</span>
+    <div class="grid g4">
+      <div class="card"><h3 class="h3">Torcedor</h3><div class="price">Grátis</div><ul class="plain" style="font-size:14.5px"><li>Cadastro na família Sons</li><li>Avisos de jogos e conteúdos</li><li>Acesso à comunidade</li></ul></div>
+      <div class="card"><h3 class="h3">Apoiador</h3><div class="price">R$ 19,90<small>/mês</small></div><ul class="plain" style="font-size:14.5px"><li>Nome no mural de fundadores</li><li>Vlogs antes de todo mundo</li><li>Voto nas enquetes do clube</li><li>10% na loja</li></ul></div>
+      <div class="card inv"><span class="ribbon">Recomendado</span><h3 class="h3">Fundador</h3><div class="price">R$ 39,90<small>/mês · anual</small></div><ul class="plain" style="font-size:14.5px"><li>Tudo do Apoiador</li><li>Camisa Fundador numerada</li><li>Encontro anual com o elenco</li><li>20% na loja</li></ul></div>
+      <div class="card"><h3 class="h3">Igreja parceira</h3><div class="price">R$ 199<small>/mês</small></div><ul class="plain" style="font-size:14.5px"><li>Marca no site e nos vídeos</li><li>Jogo seguido de culto na igreja</li><li>5 camisas Fundador</li><li>Selo “Igreja Parceira”</li></ul></div>
+    </div>
+    <p style="font-size:15px"><b>Para onde vai o dinheiro:</b> cada real entra na conta do projeto e aparece na prestação de contas do mês. A primeira meta é equipar o time (R$ 9.410). Depois, manter os jogos da temporada.</p>
+    <p class="muted src">Comparamos com planos de entrada de 2026: Paysandu R$ 14,90 · Paraná Clube R$ 19,90 e R$ 49,89 · Sport R$ 29,90 · Portuguesa grátis. Ficamos abaixo deles no Apoiador porque ainda não temos estádio nem jogos oficiais. Fontes: <a href="https://www.oliberal.com/esportes/paysandu/paysandu-aposta-em-novos-planos-e-amplia-vantagens-do-socio-torcedor-para-2026-1.1071595" target="_blank" rel="noopener">O Liberal</a> · <a href="https://www.bemparana.com.br/esportes/parana-clube/parana-clube-lanca-novos-planos-de-socios-e-pacotes-de-ingressos/" target="_blank" rel="noopener">Bem Paraná</a> · <a href="https://www.diariodepernambuco.com.br/esportes-dp/sport/2026/03/11709974-sport-apresenta-programa-de-socios-para-2026-veja-categorias-e-beneficios.html" target="_blank" rel="noopener">Diario de Pernambuco</a> · <a href="https://www.mktesportivo.com/2026/01/portuguesa-saf-retoma-projeto-de-ingressos-gratuitos-no-paulistao-2026/" target="_blank" rel="noopener">MKT Esportivo</a></p>
+  </div>
+</section>
+
+<!-- 16 TOKEN E INVESTIMENTO -->
+<section class="slide" data-title="Token e investimento">
+  <div class="inner">
+    <span class="eyebrow">11 · Token e investimento</span>
+    <h2 class="h2">Fé e mercado, com as regras na mesa</h2>
+    <p class="lead">Dá para o cristão participar desses dois mundos de forma honesta. Separamos duas coisas que muita gente mistura: <b style="color:var(--wh)">participar</b> do clube e <b style="color:var(--wh)">investir</b> no clube. Os dois caminhos ainda estão em estudo.</p>
+    <div class="seg" role="tablist" aria-label="Caminhos">
+      <button class="on" role="tab" aria-selected="true" data-pane="p-token">Caminho 1 · Token do clube</button>
+      <button role="tab" aria-selected="false" data-pane="p-invest">Caminho 2 · Investir na SAF</button>
+    </div>
+    <div class="pane" id="p-token">
+      <div class="grid g2">
+        <div class="card"><span class="eyebrow">Para participar</span><h3 class="h3">Uma carteirinha digital de torcedor</h3>
+          <ul class="plain ok"><li>Voto em decisões: uniforme, música de entrada, ações sociais</li><li>Experiências: treino aberto, vestiário, viagem com o time</li><li>Recompensas por participar da comunidade</li></ul></div>
+        <div class="card"><span class="eyebrow">O que não dá</span><h3 class="h3">Promessa de lucro</h3>
+          <span class="muted">Token vendido com promessa de ganho vira investimento e passa a ser fiscalizado pela CVM. Por isso o nosso vale pelo acesso que dá.</span>
+          <span style="margin-top:6px"><b>Regra:</b> nenhum token será lançado antes do parecer de um advogado especialista.</span></div>
+      </div>
+    </div>
+    <div class="pane" id="p-invest" hidden>
+      <div class="grid g2">
+        <div class="card"><span class="eyebrow">Primeiro os riscos</span><h3 class="h3">O que você precisa saber</h3>
+          <ul class="plain risk"><li>Você pode perder o valor investido.</li><li>Não há garantia de retorno, nem de prazo para vender sua parte.</li><li>A decisão deve ser financeira. Amor ao time não é motivo para investir.</li></ul></div>
+        <div class="card"><span class="eyebrow">Depois como funciona</span><h3 class="h3">Só no cenário SAF</h3>
+          <ul class="plain"><li>Até 30% da SAF oferecido a investidores, por plataforma autorizada pela CVM.</li><li>Participação real: se o clube gerar valor, ela pode valer mais.</li><li>A CVM permite essa captação para SAFs com receita de até R$ 40 milhões por ano, com regras de governança.</li><li>Tudo com contrato, documento de riscos e prestação de contas.</li></ul></div>
+      </div>
+    </div>
+    <div class="card inv">
+      <h3 class="h3">Compromisso de transparência</h3>
+      <ol class="steps" style="gap:8px"><li><span>Prestação de contas mensal e pública no site.</span></li><li><span>Nenhum real de investimento captado antes da estrutura jurídica definida.</span></li><li><span>Contrato e riscos explicados por escrito antes de qualquer investimento.</span></li></ol>
+    </div>
+    <p class="muted src">Conteúdo informativo. Não é oferta de investimento nem orientação jurídica ou financeira. Referências: <a href="https://www.migalhas.com.br/quentes/392682/cvm-permite-que-times-de-futebol-captem-recursos-com-crowdfunding" target="_blank" rel="noopener">Migalhas</a> · <a href="https://maquinadoesporte.com.br/futebol/mercado-de-acoes-anima-safs-que-nao-poderao-usar-paixao-para-atrair-investimentos-de-torcedores" target="_blank" rel="noopener">Máquina do Esporte</a> · <a href="https://www.machadomeyer.com.br/pt/inteligencia-juridica/publicacoes-ij/direito-digital/fan-token-quanto-vale-o-sentimento-de-um-torcedor" target="_blank" rel="noopener">Machado Meyer</a></p>
+  </div>
+</section>
+
+<!-- 17 ECOSSISTEMA -->
+<section class="slide lt" data-title="O ecossistema">
+  <div class="inner">
+    <span class="eyebrow">12 · O ecossistema</span>
+    <h2 class="h2">Tudo gira em torno do torcedor</h2>
+    <p class="lead">O conteúdo atrai. A comunidade aproxima. Sócios, loja e parceiros pagam a conta.</p>
+    <div class="grid g3">
+      <div class="card"><h3 class="h3">Loja e gráfica parceira</h3><span class="muted">Camisa Fundador, camisas com nome e número, coletes e kits, sob demanda com uma confecção parceira.</span></div>
+      <div class="card"><h3 class="h3">Vitrine dos voluntários</h3><span class="muted">Uma página com o serviço de cada um: vídeo, stories, tráfego, design, networking.</span></div>
+      <div class="card"><h3 class="h3">Igrejas parceiras</h3><span class="muted">Selo e plano próprio. Jogos que terminam com culto na igreja parceira.</span></div>
+      <div class="card"><h3 class="h3">Oração pós-jogo</h3><span class="muted">Os dois times reunidos no fim de cada partida.</span></div>
+      <div class="card"><h3 class="h3">Campo com a prefeitura</h3><span class="muted">Espaço municipal ou estadual em Aparecida de Goiânia ou Goiânia, para treinar sem custo.</span></div>
+      <div class="card"><h3 class="h3">Escolinha no futuro</h3><span class="muted">Ação social com crianças da região e nova fonte de receita.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 VOLUNTARIO -->
+<section class="slide" data-title="O que o voluntário ganha">
+  <div class="inner">
+    <span class="eyebrow">12 · O ecossistema</span>
+    <h2 class="h2">O que o voluntário ganha</h2>
+    <div class="grid g2">
+      <div class="card"><h3 class="h3">Crédito em tudo</h3><span class="muted">Seu @ em todo vídeo, post e peça que você produzir.</span></div>
+      <div class="card"><h3 class="h3">Página na Vitrine</h3><span class="muted">Portfólio, serviços e botão de contato no site do clube.</span></div>
+      <div class="card"><h3 class="h3">Indicação prioritária</h3><span class="muted">Para patrocinadores e parceiros do clube que precisarem do seu serviço.</span></div>
+      <div class="card"><h3 class="h3">Certificado de fundador</h3><span class="muted">Reconhecimento oficial como parte da fundação do projeto.</span></div>
+    </div>
+    <p class="big" style="font-size:clamp(24px,3.6vw,40px)">Neste começo não há salário. Há vitrine, reconhecimento e um propósito maior que o jogo.</p>
+  </div>
+</section>
+
+<!-- 19 COMPROMISSO -->
+<section class="slide lt" data-title="O compromisso">
+  <div class="inner">
+    <span class="eyebrow">13 · O compromisso</span>
+    <h2 class="h2">O que pedimos de quem entra</h2>
+    <p class="lead">Regras claras desde o começo evitam frustração depois. Valem para jogadores e para quem ajuda com serviço.</p>
+    <ol class="steps">
+      <li><div><b>Vida na igreja.</b> <span class="muted">Participar de uma igreja ou denominação cristã pelo menos uma vez por semana. Confirmado por autodeclaração no cadastro e pela indicação do seu pastor ou líder.</span></div></li>
+      <li><div><b>Conduta.</b> <span class="muted">Respeito dentro e fora de campo. A camisa representa o clube e a nossa fé.</span></div></li>
+      <li><div><b>Entregas no prazo.</b> <span class="muted">Cada um combina um cronograma de acordo com a sua disponibilidade e cumpre.</span></div></li>
+      <li><div><b>Vlog quando escalado.</b> <span class="muted">Gravar o “Vem comigo num dia de jogo” quando for a sua vez.</span></div></li>
+      <li><div><b>Uniforme por conta própria, por enquanto.</b> <span class="muted">Até a meta “equipar o time” ser batida, cada jogador paga o seu (R$ 119).</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 20 FAQ -->
+<section class="slide lt" data-title="Perguntas frequentes">
+  <div class="inner">
+    <span class="eyebrow">14 · Perguntas frequentes</span>
+    <h2 class="h2">Perguntas que todo mundo faz</h2>
+    <div>
+      <details><summary>Preciso pagar para participar?</summary><p>Não para entrar no projeto. Neste começo, cada jogador paga o próprio uniforme (R$ 119) até batermos a meta “equipar o time”. Contribuir com dinheiro é opcional.</p></details>
+      <details><summary>Vou receber salário?</summary><p>Não agora. O clube começa sem dinheiro. O que oferecemos é vitrine para o seu trabalho, crédito em tudo que você produzir e indicação para parceiros.</p></details>
+      <details><summary>Isso é pirâmide ou promessa de dinheiro fácil?</summary><p>Não. Ninguém ganha por trazer pessoas. O sócio-torcedor é uma assinatura com benefícios. Investimento, se existir, só no cenário SAF, por plataforma autorizada pela CVM e com os riscos por escrito.</p></details>
+      <details><summary>Para onde vai o dinheiro?</summary><p>Para a conta empresarial do projeto. Todo mês publicamos quanto entrou, quanto saiu e no que foi gasto.</p></details>
+      <details><summary>Quem manda no clube?</summary><p>Leonardo Mendes, fundador do projeto, coordena e responde pelas decisões. Cada área tem um responsável. O grupo vota nas decisões que mudam o rumo do projeto, como o cenário e o uniforme.</p></details>
+      <details><summary>E se não der certo?</summary><p>Cada degrau só começa quando o anterior estiver pago. Se uma meta não for batida, a gente segura o passo, presta contas e decide junto o que fazer.</p></details>
+      <details><summary>Preciso ser da Sons Church?</summary><p>Não. Precisa participar de uma igreja cristã pelo menos uma vez por semana.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 21 SEU SIM -->
+<section class="slide" data-title="O seu sim" id="sim">
+  <div class="inner" style="justify-content:flex-start">
+    <span class="eyebrow">15 · O seu sim</span>
+    <h2 class="h2">Você está <span class="brush">dentro?</span></h2>
+    <p class="lead">Leva 2 minutos. Suas respostas vão direto para Leonardo Mendes, fundador do projeto.</p>
+    <div class="formgrid">
+      <div style="display:grid;gap:20px;min-width:0">
+        <div class="seg" id="tipoSeg" aria-label="Tipo de participação">
+          <button class="on" data-tipo="jogador" type="button">Sou jogador</button>
+          <button data-tipo="apoiador" type="button">Quero ajudar com serviço</button>
+        </div>
+        <form id="form" novalidate>
+          <input type="hidden" name="tipo" id="tipo" value="jogador">
+          <input class="hp" type="text" name="site" id="site" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="grid g2">
+            <div class="field"><label for="nome">Nome completo *</label><input id="nome" name="nome" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="whatsapp">WhatsApp *</label><input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(62) 9 0000-0000" required></div>
+          </div>
+          <div class="field"><label for="email">E-mail *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="grid g2">
+            <div class="field"><label for="igreja">Igreja ou denominação que frequenta *</label><input id="igreja" name="igreja" type="text" required></div>
+            <div class="field"><label for="pastor">Nome do seu pastor ou líder</label><input id="pastor" name="pastor" type="text"></div>
+          </div>
+          <div class="field only-jogador"><label for="posicao">Posição em campo</label><select id="posicao" name="posicao"><option value="">Selecione</option><option>Goleiro</option><option>Zagueiro</option><option>Lateral</option><option>Volante</option><option>Meia</option><option>Atacante</option></select></div>
+          <div class="field"><span class="lbl">Você aprova o projeto? *</span><div class="chips"><label><input type="radio" name="aceite" value="Sim, estou dentro" checked> Sim, estou dentro</label><label><input type="radio" name="aceite" value="Tenho dúvidas"> Tenho dúvidas</label></div></div>
+          <div class="field"><span class="lbl">Qual cenário você prefere?</span><div class="chips"><label><input type="radio" name="cenario" value="SAF"> SAF</label><label><input type="radio" name="cenario" value="Projeto da igreja"> Projeto da igreja</label><label><input type="radio" name="cenario" value="Ainda não sei" checked> Ainda não sei</label></div></div>
+          <div class="field"><span class="lbl">Qual nome você prefere?</span><div class="chips"><label><input type="radio" name="nomeClube" value="Sons Church FC"> Sons Church FC</label><label><input type="radio" name="nomeClube" value="Nome próprio + Sons patrocinadora"> Nome próprio + Sons patrocinadora</label><label><input type="radio" name="nomeClube" value="Ainda não sei" checked> Ainda não sei</label></div></div>
+          <div class="field"><span class="lbl">Como vai contribuir?</span><div class="chips" id="contrib"><label><input type="checkbox" name="contribuicao" value="Financeira"> Financeira</label><label><input type="checkbox" name="contribuicao" value="Serviço"> Serviço</label><label class="only-jogador"><input type="checkbox" name="contribuicao" value="Jogando" checked> Jogando</label></div></div>
+          <div class="field hide" id="f-valor"><label for="valor">Quanto por mês? (R$)</label><input id="valor" name="valor" type="number" min="0" step="5" inputmode="numeric" placeholder="Ex.: 50"></div>
+          <div class="field hide" id="f-servico"><label for="servico">Qual serviço?</label><select id="servico" name="servico"><option value="">Selecione</option><option>Vídeo / videomaker</option><option>Stories / social media</option><option>Tráfego pago</option><option>Design</option><option>Fotografia</option><option>Site / tecnologia</option><option>Networking / comercial</option><option>Jurídico / contábil</option><option>Outro</option></select></div>
+          <div class="field"><span class="lbl">Dias disponíveis</span><div class="chips"><label><input type="checkbox" name="dias" value="Seg"> Seg</label><label><input type="checkbox" name="dias" value="Ter"> Ter</label><label><input type="checkbox" name="dias" value="Qua"> Qua</label><label><input type="checkbox" name="dias" value="Qui"> Qui</label><label><input type="checkbox" name="dias" value="Sex"> Sex</label><label><input type="checkbox" name="dias" value="Sáb"> Sáb</label><label><input type="checkbox" name="dias" value="Dom"> Dom</label></div></div>
+          <div class="field"><label for="horas">Horas por semana</label><select id="horas" name="horas"><option value="">Selecione</option><option>Até 2h</option><option>2 a 5h</option><option>5 a 10h</option><option>Mais de 10h</option></select></div>
+          <div class="field"><label for="mensagem">Algo mais que queira dizer?</label><textarea id="mensagem" name="mensagem"></textarea></div>
+          <label class="check"><input type="checkbox" name="confirmaIgreja" id="confirmaIgreja"> <span>Confirmo que participo de uma igreja pelo menos uma vez por semana. *</span></label>
+          <label class="check"><input type="checkbox" name="consentimento" id="consentimento"> <span>Autorizo Leonardo Mendes, fundador do projeto Sons Church FC, a usar meu nome, e-mail, WhatsApp e respostas para contato sobre o projeto. Posso pedir a exclusão dos meus dados a qualquer momento pelo e-mail innoprobusiness@gmail.com. *</span></label>
+          <div class="msg hide" id="msg" role="status" aria-live="polite"></div>
+          <button class="btn" type="submit" id="send" style="justify-self:start">Enviar meu sim</button>
+        </form>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Próximos passos</span>
+        <ol class="steps">
+          <li><div><b>Até 7 dias.</b> <span class="muted">Convite para a reunião de fundação pelo WhatsApp.</span></div></li>
+          <li><div><b>Reunião de fundação.</b> <span class="muted">Votação do cenário e do uniforme, e escolha dos responsáveis por área.</span></div></li>
+          <li><div><b>Primeiros 30 dias.</b> <span class="muted">Abertura das redes, primeiro vlog e campanha “equipar o time”.</span></div></li>
+          <li><div><b>Todo mês.</b> <span class="muted">Prestação de contas aberta no site.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<div class="lbx" id="lbx" hidden role="dialog" aria-modal="true" aria-label="Arte do reforço"><button class="x" id="lbxX">Fechar ✕</button><button class="nv" id="lbxP" aria-label="Anterior">←</button><img id="lbxImg" alt=""><button class="nv" id="lbxN" aria-label="Próximo">→</button></div>
+<nav class="nav" id="nav" aria-label="Navegação dos slides">
+  <button class="arrow" id="prev" aria-label="Slide anterior">←</button>
+  <div class="mid"><div class="bar"><i id="barFill"></i></div><div class="navlabel" id="navlabel">Capa</div></div>
+  <button class="arrow fill" id="next" aria-label="Próximo slide">→</button>
+</nav>
+
+<script>
+(function(){
+  var track=document.getElementById('track'), slides=[].slice.call(track.children), N=slides.length, cur=0;
+  var top=document.getElementById('top'), nav=document.getElementById('nav'), prev=document.getElementById('prev'), next=document.getElementById('next');
+  var count=document.getElementById('count'), barFill=document.getElementById('barFill'), navlabel=document.getElementById('navlabel');
+  var pad=function(n){return String(n).padStart(2,'0')};
+
+  // Chapter menu
+  var list=document.getElementById('drawerList'), drawer=document.getElementById('drawer'), mb=document.getElementById('menuBtn');
+  slides.forEach(function(s,i){var b=document.createElement('button');b.className='it';b.innerHTML='<span>'+pad(i+1)+'</span>'+s.dataset.title;b.onclick=function(){go(i);toggle(false)};list.appendChild(b)});
+  function toggle(v){drawer.classList.toggle('open',v);mb.setAttribute('aria-expanded',v)}
+  mb.onclick=function(){toggle(!drawer.classList.contains('open'))};
+  document.getElementById('drawerX').onclick=function(){toggle(false)};
+
+  function go(i,noHash){
+    i=Math.max(0,Math.min(N-1,i)); cur=i;
+    track.style.transform='translateX('+(-100*i)+'%)';
+    slides.forEach(function(s,j){s.setAttribute('aria-hidden',j!==i);s.inert=(j!==i)});
+    var lt=slides[i].classList.contains('lt');
+    top.classList.toggle('lt',lt); nav.classList.toggle('lt',lt);
+    count.textContent=pad(i+1)+' / '+pad(N);
+    barFill.style.width=((i+1)/N*100)+'%';
+    navlabel.textContent=slides[i].dataset.title;
+    prev.disabled=i===0; next.disabled=i===N-1;
+    [].forEach.call(list.children,function(b,j){b.classList.toggle('on',j===i)});
+    if(!noHash){try{history.replaceState(null,'','#slide-'+(i+1))}catch(e){}}
+  }
+  prev.onclick=function(){go(cur-1)}; next.onclick=function(){go(cur+1)};
+  document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){var v=b.dataset.go;go(v==='last'?N-1:+v)})});
+
+  // Keyboard
+  addEventListener('keydown',function(e){
+    var t=e.target.tagName; if(t==='INPUT'||t==='TEXTAREA'||t==='SELECT')return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'){go(cur+1);e.preventDefault()}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){go(cur-1);e.preventDefault()}
+    else if(e.key==='Home'){go(0)} else if(e.key==='End'){go(N-1)}
+    else if(e.key==='Escape'){toggle(false)}
+  });
+
+  // Swipe (horizontal only)
+  function swipe(el,onL,onR,stop){
+    var x0=null,y0=null;
+    el.addEventListener('touchstart',function(e){if(stop)e.stopPropagation();if(e.target.closest&&e.target.closest('[data-noswipe]')){x0=null;return}var t=e.touches[0];x0=t.clientX;y0=t.clientY},{passive:true});
+    el.addEventListener('touchend',function(e){if(stop)e.stopPropagation();if(x0===null)return;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;
+      if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.4){dx<0?onL():onR()}},{passive:true});
+  }
+  swipe(document.getElementById('deck'),function(){go(cur+1)},function(){go(cur-1)});
+
+  // Hash start
+  var m=/^#slide-(\d+)$/.exec(location.hash); track.style.transition='none'; go(m?+m[1]-1:0,true); track.offsetWidth; track.style.transition='';
+  addEventListener('hashchange',function(){var m=/^#slide-(\d+)$/.exec(location.hash);if(m&&+m[1]-1!==cur)go(+m[1]-1,true)});
+
+  // Kit carousel
+  var names=["Modelo A Escuro", "Modelo A Claro", "Modelo C Escuro", "Modelo C Claro", "Modelo D Pinceladas", "Coletes dupla face"];
+  var kt=document.getElementById('kcTrack'), kn=kt.children.length, k=0, dots=document.getElementById('kcDots');
+  for(var i=0;i<kn;i++){(function(i){var d=document.createElement('button');d.setAttribute('aria-label','Ver '+names[i]);d.onclick=function(){kgo(i)};dots.appendChild(d)})(i)}
+  function kgo(i){k=(i+kn)%kn;kt.style.transform='translateX('+(-100*k)+'%)';document.getElementById('kcName').textContent=names[k];
+    document.getElementById('kcCount').textContent=(k+1)+' de '+kn+' · propostas · toque nas setas · a escolha final vai para votação';
+    [].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===k)})}
+  document.getElementById('kcPrev').onclick=function(){kgo(k-1)}; document.getElementById('kcNext').onclick=function(){kgo(k+1)};
+  swipe(document.getElementById('kc'),function(){kgo(k+1)},function(){kgo(k-1)},true);
+  kgo(0);
+
+
+  // Roster lightbox
+  var cards=[].slice.call(document.querySelectorAll('.pcard')), lbx=document.getElementById('lbx'), li=document.getElementById('lbxImg'), lk=0;
+  function lshow(i){lk=(i+cards.length)%cards.length;var im=cards[lk].querySelector('img');li.src=im.src;li.alt=im.alt;lbx.hidden=false}
+  cards.forEach(function(c,i){c.onclick=function(){lshow(i)}});
+  var navBtns=[document.getElementById('lbxP'),document.getElementById('lbxN')], single=false;
+  function lsingle(src,alt){single=true;li.src=src;li.alt=alt;navBtns.forEach(function(b){b.hidden=true});li.style.maxWidth='100%';lbx.hidden=false}
+  var _lshow=lshow; lshow=function(i){single=false;navBtns.forEach(function(b){b.hidden=false});li.style.maxWidth='';_lshow(i)};
+  document.querySelectorAll('.zoomable').forEach(function(z){z.onclick=function(){var im=z.querySelector('img');lsingle(im.src,im.alt)}});
+  document.getElementById('lbxX').onclick=function(){lbx.hidden=true};
+  document.getElementById('lbxP').onclick=function(){lshow(lk-1)};
+  document.getElementById('lbxN').onclick=function(){lshow(lk+1)};
+  lbx.addEventListener('click',function(e){if(e.target===lbx)lbx.hidden=true});
+  addEventListener('keydown',function(e){if(lbx.hidden)return;e.stopImmediatePropagation();if(e.key==='Escape'){lbx.hidden=true;return}if(single)return;if(e.key==='ArrowRight')lshow(lk+1);if(e.key==='ArrowLeft')lshow(lk-1)},true);
+  swipe(lbx,function(){lshow(lk+1)},function(){lshow(lk-1)},true);
+
+  // Tabs (token/invest)
+  document.querySelectorAll('.seg').forEach(function(seg){
+    var bs=seg.querySelectorAll('button[data-pane]'); if(!bs.length)return;
+    bs.forEach(function(b){b.onclick=function(){bs.forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-selected',on);document.getElementById(x.dataset.pane).hidden=!on})}});
+  });
+
+  // Form
+  var form=document.getElementById('form'), msg=document.getElementById('msg'), send=document.getElementById('send');
+  function setTipo(t){document.getElementById('tipo').value=t;
+    document.querySelectorAll('#tipoSeg button').forEach(function(b){b.classList.toggle('on',b.dataset.tipo===t)});
+    document.querySelectorAll('.only-jogador').forEach(function(el){el.classList.toggle('hide',t!=='jogador')});
+    var j=form.querySelector('input[value="Jogando"]'); if(j)j.checked=(t==='jogador'); syncContrib()}
+  document.querySelectorAll('#tipoSeg button').forEach(function(b){b.onclick=function(){setTipo(b.dataset.tipo)}});
+  function syncContrib(){var v=[].map.call(form.querySelectorAll('input[name=contribuicao]:checked'),function(i){return i.value});
+    document.getElementById('f-valor').classList.toggle('hide',v.indexOf('Financeira')<0);
+    document.getElementById('f-servico').classList.toggle('hide',v.indexOf('Serviço')<0)}
+  document.getElementById('contrib').addEventListener('change',syncContrib);
+  form.whatsapp.addEventListener('input',function(e){var d=e.target.value.replace(/\D/g,'').slice(0,11);
+    e.target.value=d.length>10?d.replace(/(\d{2})(\d)(\d{4})(\d{4})/,'($1) $2 $3-$4'):d.length>6?d.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3'):d.length>2?d.replace(/(\d{2})(\d+)/,'($1) $2'):d});
+  function show(t,ok){msg.className='msg '+(ok?'ok':'err');msg.innerHTML=t}
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var fd=new FormData(form), data={};
+    fd.forEach(function(v,k){ if(data[k]!==undefined){data[k]=[].concat(data[k],v)} else data[k]=v });
+    ['contribuicao','dias'].forEach(function(k){if(data[k]&&!Array.isArray(data[k]))data[k]=[data[k]]});
+    data.consentimento=form.consentimento.checked; data.confirmaIgreja=form.confirmaIgreja.checked?'Sim':'';
+    if(!data.nome||data.nome.trim().length<3){show('Preencha seu nome completo.');form.nome.focus();return}
+    if(!data.whatsapp||data.whatsapp.replace(/\D/g,'').length<10){show('Confira o WhatsApp com DDD.');form.whatsapp.focus();return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email||'')){show('Confira o e-mail.');form.email.focus();return}
+    if(!data.igreja||data.igreja.trim().length<2){show('Conte qual igreja você frequenta.');form.igreja.focus();return}
+    if(!data.confirmaIgreja){show('Marque a confirmação de participação semanal na igreja.');return}
+    if(!data.consentimento){show('Para enviar, marque a autorização de uso dos dados.');return}
+    send.disabled=true;send.textContent='Enviando…';
+    try{
+      window.LIVE_SITE=true;
+      var r=await fetch('/api/inscricao',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      var j=await r.json().catch(function(){return {}});
+      if(r.ok&&j.ok){var t=document.getElementById('tipo').value;form.reset();setTipo(t);
+        show('<b>Recebido!</b> Obrigado por fazer parte da fundação. Em até 7 dias você recebe pelo WhatsApp o convite para a reunião de fundação.',true);send.textContent='Enviado ✓';return}
+      throw new Error(j.error||'Falha no envio');
+    }catch(err){
+      show('Não conseguimos enviar agora. Confira sua conexão e tente de novo. Se continuar, mande suas respostas para <b>innoprobusiness@gmail.com</b>.');
+      send.disabled=false;send.textContent='Tentar de novo';
+    }
+  });
+  setTipo('jogador');
+})();
+</script>
+</body>
+</html>

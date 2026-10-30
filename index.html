@@ -434,6 +434,21 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 .bio-x{position:absolute;top:12px;right:12px;z-index:2;background:#222;border:0;border-radius:99px;padding:8px 14px;font-weight:800;font-size:13px}
 .bio-ex{font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--sim);border:1px solid #5b4a1d;background:#211a08;border-radius:6px;padding:2px 6px}
 .pcard div span.more{display:block;margin-top:4px;font-size:11.5px;font-weight:800;letter-spacing:.06em;color:#D9B25A}
+
+.live{background:#0B0B0B;color:var(--wh);border-radius:16px;overflow:hidden;border:1px solid #222}
+.live-hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid #222;font-size:13px}
+.live-hd b{font-family:var(--d);font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:16px}
+.live-hd>span:not(.dot):not(.bio-ex){color:var(--gr)}
+.dot{width:9px;height:9px;border-radius:50%;background:#E5484D;box-shadow:0 0 0 4px rgba(229,72,77,.2);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(229,72,77,0)}}
+.live-row{overflow:hidden;padding:12px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.live-track{display:flex;gap:10px;width:max-content;animation:tick 38s linear infinite}
+.live-track span{white-space:nowrap;border:1px solid #2a2a2a;border-radius:99px;padding:7px 13px;font-size:13.5px;color:#cfcfca}
+.live-track span b{color:#fff}
+.live-track span.f{border-color:var(--gold);color:var(--gold2);background:rgba(212,169,70,.08)}
+.live-track span.f b{color:var(--gold2)}
+@keyframes tick{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.live-track{animation:none;flex-wrap:wrap;width:auto;padding:0 16px}.dot{animation:none}}
 </style>
 </head>
 <body>
@@ -888,13 +903,19 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
   <div class="inner">
     <span class="eyebrow">10 · Sócio-torcedor fundador</span>
     <h2 class="h2">Quem assina agora é fundador para sempre</h2>
-    <p class="lead">O sócio-torcedor é uma assinatura com benefícios. Ele não compra parte do clube. Compra lugar na história: o nome dos primeiros sócios fica no mural de fundadores.</p>
+    <p class="lead">O sócio-torcedor é uma assinatura com benefícios. Ele não compra parte do clube: compra lugar na história. Começamos com benefícios que conseguimos cumprir de verdade, e eles crescem junto com o clube.</p>
     <span class="tag">Proposta · valores a validar com o grupo</span>
     <div class="grid g4">
-      <div class="card"><h3 class="h3">Torcedor</h3><div class="price">Grátis</div><ul class="plain" style="font-size:14.5px"><li>Cadastro na família Sons</li><li>Avisos de jogos e conteúdos</li><li>Acesso à comunidade</li></ul></div>
-      <div class="card"><h3 class="h3">Apoiador</h3><div class="price">R$ 19,90<small>/mês</small></div><ul class="plain" style="font-size:14.5px"><li>Nome no mural de fundadores</li><li>Vlogs antes de todo mundo</li><li>Voto nas enquetes do clube</li><li>10% na loja</li></ul></div>
-      <div class="card inv"><span class="ribbon">Recomendado</span><h3 class="h3">Fundador</h3><div class="price">R$ 39,90<small>/mês · anual</small></div><ul class="plain" style="font-size:14.5px"><li>Tudo do Apoiador</li><li>Camisa Fundador numerada</li><li>Encontro anual com o elenco</li><li>20% na loja</li></ul></div>
-      <div class="card"><h3 class="h3">Igreja parceira</h3><div class="price">R$ 199<small>/mês</small></div><ul class="plain" style="font-size:14.5px"><li>Marca no site e nos vídeos</li><li>Jogo seguido de culto na igreja</li><li>5 camisas Fundador</li><li>Selo “Igreja Parceira”</li></ul></div>
+      <div class="card"><h3 class="h3">Torcedor</h3><div class="price">Grátis</div><ul class="plain" style="font-size:14.5px"><li>Cadastro na família Sons</li><li>Avisos de jogos e conteúdos</li><li>Acesso à comunidade</li><li>Voto nas enquetes abertas</li></ul></div>
+      <div class="card"><h3 class="h3">Apoiador</h3><div class="price">R$ 19,90<small>/mês</small></div><ul class="plain" style="font-size:14.5px"><li>Nome e cidade no painel ao vivo de apoiadores</li><li>Nome nos créditos do vlog da semana</li><li>Vlogs antes de todo mundo</li><li>Grupo exclusivo de apoiadores</li><li>10% na loja</li></ul></div>
+      <div class="card inv"><span class="ribbon">Recomendado</span><h3 class="h3">Fundador</h3><div class="price">R$ 39,90<small>/mês · anual</small></div><ul class="plain" style="font-size:14.5px"><li>Tudo do Apoiador</li><li>Selo dourado de Fundador no painel</li><li>Certificado digital numerado</li><li>Camisa a preço de custo (a partir de R$ 79,90)</li><li>Uma segunda-feira com o elenco: culto e jogo</li><li>20% na loja</li></ul></div>
+      <div class="card"><h3 class="h3">Igreja parceira</h3><div class="price">R$ 199<small>/mês</small></div><ul class="plain" style="font-size:14.5px"><li>Marca no site e nos vídeos</li><li>Jogo seguido de culto na igreja</li><li>Selo “Igreja Parceira” no painel</li><li>Camisas a preço de custo para os membros</li></ul></div>
+    </div>
+    <div class="live" aria-label="Painel ao vivo de apoiadores, exemplo">
+      <div class="live-hd"><span class="dot"></span><b>Ao vivo na plataforma</b><span>Novos apoiadores · atualiza na hora, 24h por dia</span><span class="bio-ex" style="margin-left:auto">EXEMPLO</span></div>
+      <div class="live-row"><div class="live-track" id="liveTrack">
+        <span><b>Ana Paula</b> · Aparecida de Goiânia, GO</span><span class="f"><b>Marcos R.</b> · Goiânia, GO · Fundador</span><span><b>Igreja Vida Nova</b> · Senador Canedo, GO · Igreja parceira</span><span><b>Juliana M.</b> · Trindade, GO</span><span class="f"><b>Pedro H.</b> · Anápolis, GO · Fundador</span><span><b>Carla S.</b> · Brasília, DF</span><span><b>Rafael T.</b> · Aparecida de Goiânia, GO</span><span class="f"><b>Lucas A.</b> · Goiânia, GO · Fundador</span>
+      </div></div>
     </div>
     <p style="font-size:15px"><b>Para onde vai o dinheiro:</b> cada real entra na conta do projeto e aparece na prestação de contas do mês. A primeira meta é chegar a 230 apoiadores para bancar os amistosos. Depois, fazer caixa para os campeonatos.</p>
     <p class="muted src">Comparamos com planos de entrada de 2026: Paysandu R$ 14,90 · Paraná Clube R$ 19,90 e R$ 49,89 · Sport R$ 29,90 · Portuguesa grátis. Ficamos abaixo deles no Apoiador porque ainda não temos estádio nem jogos oficiais. Fontes: <a href="https://www.oliberal.com/esportes/paysandu/paysandu-aposta-em-novos-planos-e-amplia-vantagens-do-socio-torcedor-para-2026-1.1071595" target="_blank" rel="noopener">O Liberal</a> · <a href="https://www.bemparana.com.br/esportes/parana-clube/parana-clube-lanca-novos-planos-de-socios-e-pacotes-de-ingressos/" target="_blank" rel="noopener">Bem Paraná</a> · <a href="https://www.diariodepernambuco.com.br/esportes-dp/sport/2026/03/11709974-sport-apresenta-programa-de-socios-para-2026-veja-categorias-e-beneficios.html" target="_blank" rel="noopener">Diario de Pernambuco</a> · <a href="https://www.mktesportivo.com/2026/01/portuguesa-saf-retoma-projeto-de-ingressos-gratuitos-no-paulistao-2026/" target="_blank" rel="noopener">MKT Esportivo</a></p>
@@ -1193,6 +1214,10 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
   tps.forEach(function(b){b.onclick=function(){pickTeam(b.dataset.team)}});
   document.querySelectorAll('[data-team-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();pickTeam(a.dataset.teamGo);
     var i=slides.findIndex(function(sl){return sl.dataset.title==='Time 1 e Time 2'});if(i>=0)go(i)})});
+
+
+  // Live supporters ticker: duplicate items for seamless loop
+  var lt=document.getElementById('liveTrack'); if(lt&&!matchMedia('(prefers-reduced-motion: reduce)').matches){lt.innerHTML+=lt.innerHTML}
 
   // Tabs (token/invest)
   document.querySelectorAll('.seg').forEach(function(seg){

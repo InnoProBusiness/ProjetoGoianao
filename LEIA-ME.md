@@ -1,7 +1,7 @@
 # Imersão Sons Church FC — carrossel
 
 ## Estrutura
-- `index.html` — o carrossel completo (29 slides)
+- `index.html` — o carrossel completo (30 slides)
 - `img/` — foto do time, uniformes, colete, logo e escudo C.R.S.C
 - `fonts/` — fontes da identidade (Barlow Condensed, Barlow e Permanent Marker), hospedadas junto com o site
 - `api/inscricao.js` — função da Vercel que envia o formulário por e-mail via Resend

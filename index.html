@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Imersão Sons Church FC</title>
+<title>Sons Church FC · Da segunda-feira ao Goianão</title>
 <meta name="description" content="Da segunda-feira ao Goianão. Conheça o projeto e decida se entra na fundação do clube.">
-<meta property="og:title" content="Imersão · Sons Church FC">
+<meta property="og:title" content="Sons Church FC · Da segunda-feira ao Goianão">
 <meta property="og:description" content="Você está sendo convidado a fundar um clube de futebol.">
 <meta property="og:image" content="/img/time.webp">
 <meta name="theme-color" content="#0B0B0B">
@@ -33,7 +33,6 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:var(--bk);color:var(--wh);font-family:var(--b);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
-body{overflow:hidden}
 img{max-width:100%;display:block}
 button{font:inherit;cursor:pointer;color:inherit}
 a{color:inherit}
@@ -465,37 +464,95 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 .eco .plain{font-size:14.5px}.eco .h3{margin-bottom:6px}.kitf{position:relative}
 #p-invest{display:flex;flex-direction:column;gap:12px}#p-invest[hidden]{display:none}
 .safm .card{padding:16px}.safm .h3{font-size:19px}.safm .muted{font-size:13.5px;line-height:1.45}
+
+/* ===== Landing page: rolagem contínua ===== */
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+html,body{height:auto}
+body{overflow-x:hidden}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.top{position:fixed;height:auto;background:rgba(11,11,11,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,169,70,.18);padding-top:calc(10px + env(safe-area-inset-top,0px));padding-bottom:10px}
+.brand{color:var(--wh);flex:none;font-weight:700}
+.tnav{display:none;gap:clamp(14px,1.8vw,26px);align-items:center}
+.tnav a{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#BDBAB2;padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}
+.tnav a:hover,.tnav a.on{color:var(--gold2);border-bottom-color:var(--gold)}
+.tact{display:flex;align-items:center;gap:10px;flex:none}
+.tcta{padding:10px 18px;font-size:14px;white-space:nowrap}
+.menuBtn{color:var(--wh);padding:9px 16px;white-space:nowrap}
+@media(min-width:1180px){.tnav{display:flex}.menuBtn{display:none}}
+@media(max-width:420px){.brand span{display:none}.tcta{padding:9px 14px;font-size:13px}}
+.prog{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--goldgrad)}
+.drawer{z-index:50}
+.drawer a.it{display:flex;gap:14px;width:100%;text-decoration:none;padding:11px 12px;border-radius:12px;color:#ddd;font-size:15px}
+.drawer a.it span{font-family:var(--d);color:var(--grd);width:26px;flex:none}
+.drawer a.it.on,.drawer a.it:hover{background:#1c1c1c;color:#fff}
+.drawer a.it.on span{color:var(--gold)}
+.slide{height:auto;overflow:visible;flex:none;scroll-margin-top:64px;
+  padding:clamp(72px,9vw,120px) max(20px,env(safe-area-inset-right,0px)) clamp(72px,9vw,120px) max(20px,env(safe-area-inset-left,0px))}
+.inner{min-height:0;justify-content:flex-start}
+.slide+.slide.lt,.slide.lt+.slide:not(.lt){border-top:0}
+.slide.lt+.slide.lt{padding-top:clamp(24px,3vw,40px)}
+.slide:not(.lt):not(.hero)+.slide:not(.lt):not(.hero){border-top:1px solid rgba(212,169,70,.10)}
+.hero{min-height:100svh;display:flex;padding-top:calc(96px + env(safe-area-inset-top,0px));padding-bottom:clamp(48px,7vw,88px)}
+.hero .inner{min-height:0;flex:1;justify-content:flex-end;width:100%}
+@media(max-width:700px){.hero .inner{justify-content:center}}
+/* botões lado a lado, nunca sobrepostos */
+.row{gap:12px}
+.cta2{display:grid;grid-template-columns:repeat(2,max-content);gap:12px}
+@media(max-width:560px){.cta2{grid-template-columns:1fr 1fr}.cta2 .btn{padding:14px 12px;font-size:14px;text-align:center;line-height:1.2}}
+@media(max-width:340px){.cta2{grid-template-columns:1fr}}
+.btn{min-height:48px}
+/* tablet: grades de 4 viram 2 */
+@media(min-width:780px) and (max-width:1079px){.g4{grid-template-columns:1fr 1fr}.g3.eco{grid-template-columns:1fr 1fr}}
+@media(min-width:780px) and (max-width:1023px){.g3{grid-template-columns:1fr 1fr}}
+/* imagens dentro da rolagem */
+.shot img,.shot.phone img,.shot.uni1 img{max-height:640px}
+@media(min-width:980px){.inner.redes .shot img,.inner.redes .shot.phone img{max-height:680px}}
+.kc-item img{height:min(56vw,560px)}
+.slot.phone{max-height:560px}
+/* rodapé */
+.foot{background:#070707;border-top:1px solid rgba(212,169,70,.25);padding:clamp(48px,6vw,72px) max(20px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));color:var(--wh)}
+.foot-in{max-width:1120px;margin:0 auto;display:grid;gap:28px}
+@media(min-width:900px){.foot-in{grid-template-columns:1.1fr 1.4fr 1fr;align-items:start}}
+.foot-brand{display:flex;gap:14px;align-items:center}
+.foot-brand img{height:64px;width:auto}
+.foot-brand>div>b{display:block;font-family:var(--d);font-weight:800;text-transform:uppercase;font-size:26px;letter-spacing:.02em}
+.foot-brand .motto{font-size:11px;letter-spacing:.22em}
+.foot-nav{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px}
+.foot-nav a,.foot-ct a{color:#BDBAB2;text-decoration:none;font-size:14.5px}
+.foot-nav a:hover,.foot-ct a:hover{color:var(--gold2)}
+.foot-ct{display:grid;gap:10px;font-size:14.5px;color:#BDBAB2}
+.foot-ct a{color:var(--gold2)}
+.foot-cp{max-width:1120px;margin:32px auto 0;padding-top:20px;border-top:1px solid #1d1d1d;font-size:12.5px;color:var(--grd)}
 </style>
 </head>
 <body>
 
 <header class="top" id="top">
-  <button class="brand" data-go="0" style="background:none;border:0"><img src="/img/crsc-v2.webp" alt="">Sons Church FC</button>
-  <span class="count" id="count">01 / 18</span>
-  <button class="menuBtn" id="menuBtn" aria-expanded="false" aria-controls="drawer">Capítulos</button>
+  <a class="brand" href="#inicio"><img src="/img/crsc-v2.webp" alt=""><span>Sons Church FC</span></a>
+  <nav class="tnav" aria-label="Seções"><a href="#a-origem">A história</a><a href="#a-visao">O projeto</a><a href="#os-dois-cenarios">O clube</a><a href="#nossas-redes">Conteúdo</a><a href="#socio-torcedor">Seja sócio</a><a href="#o-ecossistema">Ecossistema</a><a href="#perguntas-frequentes">Dúvidas</a></nav>
+  <div class="tact"><a class="btn tcta" href="#sim">Quero fazer parte</a><button class="menuBtn" id="menuBtn" aria-expanded="false" aria-controls="drawer">Menu</button></div>
+  <i class="prog" id="prog" aria-hidden="true"></i>
 </header>
-<nav class="drawer" id="drawer" aria-label="Capítulos"><button class="x" id="drawerX">Fechar ✕</button><div id="drawerList"></div></nav>
-
-<main class="deck" id="deck">
-<div class="track" id="track">
+<nav class="drawer" id="drawer" aria-label="Todas as seções"><button class="x" id="drawerX">Fechar ✕</button><div id="drawerList"><a class="it" href="#inicio"><span>01</span>Início</a><a class="it" href="#a-origem"><span>02</span>A origem</a><a class="it" href="#a-segunda-feira"><span>03</span>A segunda-feira</a><a class="it" href="#da-segunda-ao-sabado"><span>04</span>Da segunda ao sábado</a><a class="it" href="#a-historia-do-nilston"><span>05</span>A história do Nilston</a><a class="it" href="#quem-conduz"><span>06</span>Quem conduz</a><a class="it" href="#a-visao"><span>07</span>A visão</a><a class="it" href="#clubes-de-2026"><span>08</span>Clubes de 2026</a><a class="it" href="#a-nossa-diferenca"><span>09</span>A nossa diferença</a><a class="it" href="#os-dois-cenarios"><span>10</span>Os dois cenários</a><a class="it" href="#time-1-e-time-2"><span>11</span>Time 1 e Time 2</a><a class="it" href="#qual-nome-escolher"><span>12</span>Qual nome escolher</a><a class="it" href="#do-que-precisamos"><span>13</span>Do que precisamos</a><a class="it" href="#o-custo-da-temporada"><span>14</span>O custo da temporada</a><a class="it" href="#a-meta"><span>15</span>A meta</a><a class="it" href="#o-manto"><span>16</span>O manto</a><a class="it" href="#nossas-redes"><span>17</span>Nossas redes</a><a class="it" href="#motor-de-conteudo"><span>18</span>Motor de conteúdo</a><a class="it" href="#vitrine-dos-voluntarios"><span>19</span>Vitrine dos Voluntários</a><a class="it" href="#o-site-do-clube"><span>20</span>O site do clube</a><a class="it" href="#um-reforco-por-semana"><span>21</span>Um reforço por semana</a><a class="it" href="#elenco-no-site"><span>22</span>Elenco no site</a><a class="it" href="#socio-torcedor"><span>23</span>Sócio-torcedor</a><a class="it" href="#token-e-investimento"><span>24</span>Token e investimento</a><a class="it" href="#o-ecossistema"><span>25</span>O ecossistema</a><a class="it" href="#a-loja-e-os-kits"><span>26</span>A loja e os kits</a><a class="it" href="#a-estrutura-que-vem"><span>27</span>A estrutura que vem</a><a class="it" href="#o-que-o-voluntario-ganha"><span>28</span>O que o voluntário ganha</a><a class="it" href="#o-compromisso"><span>29</span>O compromisso</a><a class="it" href="#perguntas-frequentes"><span>30</span>Perguntas frequentes</a><a class="it" href="#sim"><span>31</span>O seu sim</a></div></nav>
+<main id="conteudo">
 
 <!-- 00 CAPA -->
-<section class="slide hero" data-title="Capa" aria-label="Capa">
+<section class="slide hero" id="inicio" data-title="Capa" aria-label="Capa">
   <div class="bg" role="img" aria-label="Foto do nosso time"></div>
   <div class="inner">
     <img class="crest-hero" src="/img/crsc-v2.webp" alt="Escudo do clube: leão coroado, C.R.S.C, Cristo Reina Sons Church">
-    <span class="eyebrow">Imersão no projeto · Sons Church FC · 2026</span>
+    <span class="eyebrow">Projeto de fundação · Sons Church FC · 2026</span>
     <h1 class="h1">Da segunda-feira ao Goianão</h1>
     <p class="brush hero-brush">Mais que um time, uma família.</p>
     <p class="motto">Disciplina <b>·</b> Amizade <b>·</b> Propósito</p>
     <p class="lead">Toda segunda, às 20h30, a gente ora, louva e ouve a Palavra. Às 21h, a bola rola. Agora queremos levar esse time para fora do anonimato, e você está sendo convidado a fundar o clube.</p>
-    <div class="row"><button class="btn" data-go="1">Começar a imersão →</button><button class="btn ghost" data-go="last">Já quero dar o meu sim</button></div>
-    <p class="muted" style="font-size:14px">Leva cerca de 10 minutos. Use as setas ou deslize para o lado. No fim, você decide se entra e como quer participar.</p>
+    <div class="row cta2"><a class="btn" href="#a-origem">Conhecer o projeto ↓</a><a class="btn ghost" href="#sim">Já quero dar o meu sim</a></div>
+    <p class="muted" style="font-size:14px">Leva cerca de 10 minutos de leitura. No fim da página, você decide se entra e como quer participar.</p>
   </div>
 </section>
 
 <!-- 01 ORIGEM -->
-<section class="slide lt" data-title="A origem">
+<section class="slide lt" id="a-origem" data-title="A origem">
   <div class="inner">
     <span class="eyebrow">01 · A origem</span>
     <h2 class="h2">Começou como descontração. Virou ministério.</h2>
@@ -510,7 +567,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 01b SEGUNDA -->
-<section class="slide" data-title="A segunda-feira">
+<section class="slide" id="a-segunda-feira" data-title="A segunda-feira">
   <div class="inner">
     <span class="eyebrow">01 · A origem · toda segunda-feira</span>
     <h2 class="h2">Antes da bola, <span class="brush">o altar.</span></h2>
@@ -530,7 +587,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 01c DOIS TIMES -->
-<section class="slide lt" data-title="Da segunda ao sábado">
+<section class="slide lt" id="da-segunda-ao-sabado" data-title="Da segunda ao sábado">
   <div class="inner">
     <span class="eyebrow">01 · A origem</span>
     <h2 class="h2">Da segunda-feira nasceu o time de sábado</h2>
@@ -544,7 +601,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 02 NILSTON -->
-<section class="slide" data-title="A história do Nilston">
+<section class="slide" id="a-historia-do-nilston" data-title="A história do Nilston">
   <div class="inner">
     <span class="eyebrow">01 · A origem</span>
     <div class="grid g2" style="align-items:center;gap:32px">
@@ -560,7 +617,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 03 QUEM CONDUZ -->
-<section class="slide lt" data-title="Quem conduz">
+<section class="slide lt" id="quem-conduz" data-title="Quem conduz">
   <div class="inner">
     <span class="eyebrow">02 · Quem conduz</span>
     <h2 class="h2">Um responsável com nome e rosto</h2>
@@ -576,7 +633,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 04 VISAO -->
-<section class="slide" data-title="A visão">
+<section class="slide" id="a-visao" data-title="A visão">
   <div class="inner">
     <span class="eyebrow">03 · A visão</span>
     <h2 class="h2">Um degrau de cada vez</h2>
@@ -591,7 +648,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 05 CLUBES 2026 -->
-<section class="slide lt" data-title="Clubes de 2026">
+<section class="slide lt" id="clubes-de-2026" data-title="Clubes de 2026">
   <div class="inner">
     <span class="eyebrow">04 · Clubes de 2026</span>
     <h2 class="h2">Os clubes novos chegaram com milhões</h2>
@@ -607,7 +664,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 06 VIRADA -->
-<section class="slide" data-title="A nossa diferença">
+<section class="slide" id="a-nossa-diferenca" data-title="A nossa diferença">
   <div class="inner">
     <p class="big">Eles começaram com milhões.<br>Nós começamos com <span class="brush">propósito.</span></p>
     <div class="grid g3">
@@ -619,7 +676,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 07 CENARIOS -->
-<section class="slide lt" data-title="Os dois cenários">
+<section class="slide lt" id="os-dois-cenarios" data-title="Os dois cenários">
   <div class="inner">
     <span class="eyebrow">05 · Os dois cenários</span>
     <h2 class="h2">Dois caminhos. A decisão é do grupo.</h2>
@@ -646,7 +703,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 
 
 <!-- 07b DOIS TIMES -->
-<section class="slide" data-title="Time 1 e Time 2">
+<section class="slide" id="time-1-e-time-2" data-title="Time 1 e Time 2">
   <div class="inner">
     <span class="eyebrow">05 · Os dois cenários · o nome</span>
     <div class="idn">
@@ -673,7 +730,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 07c COMPARA NOME -->
-<section class="slide lt" data-title="Qual nome escolher">
+<section class="slide lt" id="qual-nome-escolher" data-title="Qual nome escolher">
   <div class="inner">
     <span class="eyebrow">05 · Os dois cenários · o nome</span>
     <h2 class="h2">Sons Church FC ou Cristo Reina?</h2>
@@ -692,7 +749,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 08 CUSTOS: EQUIPAR -->
-<section class="slide" data-title="Do que precisamos">
+<section class="slide" id="do-que-precisamos" data-title="Do que precisamos">
   <div class="inner">
     <span class="eyebrow">06 · Do que precisamos</span>
     <h2 class="h2">Quanto custa o primeiro ano</h2>
@@ -714,7 +771,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 09 CUSTOS: JOGO E ANO -->
-<section class="slide" data-title="O custo da temporada">
+<section class="slide" id="o-custo-da-temporada" data-title="O custo da temporada">
   <div class="inner">
     <span class="eyebrow">06 · Do que precisamos</span>
     <div class="grid g2" style="align-items:start">
@@ -742,7 +799,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 10 META -->
-<section class="slide lt" data-title="A meta">
+<section class="slide lt" id="a-meta" data-title="A meta">
   <div class="inner">
     <span class="eyebrow">06 · Do que precisamos · a primeira meta</span>
     <p class="big"><span class="brush">230 apoiadores</span><br>colocam o time em campo.</p>
@@ -766,7 +823,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 11 MANTO -->
-<section class="slide lt" data-title="O manto">
+<section class="slide lt" id="o-manto" data-title="O manto">
   <div class="inner manto" style="gap:20px">
     <span class="eyebrow">07 · O manto</span>
     <h2 class="h2">Preto e branco. Simples e forte.</h2>
@@ -789,7 +846,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 12 REDES -->
-<section class="slide" data-title="Nossas redes">
+<section class="slide" id="nossas-redes" data-title="Nossas redes">
   <div class="inner redes">
     <div class="redes-txt"><span class="eyebrow">08 · Nossas redes</span>
     <h2 class="h2">Cada jogo vira história</h2>
@@ -812,7 +869,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 13 MOTOR DE CONTEUDO -->
-<section class="slide" data-title="Motor de conteúdo">
+<section class="slide" id="motor-de-conteudo" data-title="Motor de conteúdo">
   <div class="inner">
     <span class="eyebrow">08 · Nossas redes · o conteúdo</span>
     <h2 class="h2">Toda semana: 1 vlog e <span class="brush">7 cortes.</span></h2>
@@ -836,7 +893,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 13b VITRINE -->
-<section class="slide lt" data-title="Vitrine dos Voluntários">
+<section class="slide lt" id="vitrine-dos-voluntarios" data-title="Vitrine dos Voluntários">
   <div class="inner">
     <span class="eyebrow">08 · Nossas redes · a vitrine</span>
     <h2 class="h2">Vitrine dos Voluntários: quem serve, aparece</h2>
@@ -862,7 +919,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 14 SITE -->
-<section class="slide lt" data-title="O site do clube">
+<section class="slide lt" id="o-site-do-clube" data-title="O site do clube">
   <div class="inner" style="gap:20px">
     <span class="eyebrow">09 · O site do clube</span>
     <h2 class="h2">A casa oficial do Sons</h2>
@@ -876,7 +933,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 14b REFORCO -->
-<section class="slide" data-title="Um reforço por semana">
+<section class="slide" id="um-reforco-por-semana" data-title="Um reforço por semana">
   <div class="inner">
     <span class="eyebrow">09 · O site do clube · o elenco vira conteúdo</span>
     <h2 class="h2">Toda semana, um <span class="brush">reforço apresentado.</span></h2>
@@ -892,7 +949,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 15b ELENCO NO SITE -->
-<section class="slide lt" data-title="Elenco no site">
+<section class="slide lt" id="elenco-no-site" data-title="Elenco no site">
   <div class="inner" style="gap:20px">
     <span class="eyebrow">09 · O site do clube</span>
     <h2 class="h2">Assim o elenco aparece no site</h2>
@@ -915,7 +972,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 15 SOCIO -->
-<section class="slide lt" data-title="Sócio-torcedor">
+<section class="slide lt" id="socio-torcedor" data-title="Sócio-torcedor">
   <div class="inner">
     <span class="eyebrow">10 · Sócio-torcedor fundador</span>
     <h2 class="h2">Quem assina agora é fundador para sempre</h2>
@@ -939,7 +996,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 16 TOKEN E INVESTIMENTO -->
-<section class="slide" data-title="Token e investimento">
+<section class="slide" id="token-e-investimento" data-title="Token e investimento">
   <div class="inner">
     <span class="eyebrow">11 · Token e investimento</span>
     <h2 class="h2">Fé e mercado, com as regras na mesa</h2>
@@ -1006,7 +1063,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 17 ECOSSISTEMA -->
-<section class="slide lt" data-title="O ecossistema">
+<section class="slide lt" id="o-ecossistema" data-title="O ecossistema">
   <div class="inner">
     <span class="eyebrow">12 · O ecossistema</span>
     <h2 class="h2">Tudo gira em torno do torcedor</h2>
@@ -1022,7 +1079,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 17b LOJA E KITS -->
-<section class="slide" data-title="A loja e os kits">
+<section class="slide" id="a-loja-e-os-kits" data-title="A loja e os kits">
   <div class="inner">
     <span class="eyebrow">12 · O ecossistema</span>
     <h2 class="h2">O clube chega na mão do sócio</h2>
@@ -1049,7 +1106,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 17c ESTRUTURA -->
-<section class="slide lt" data-title="A estrutura que vem">
+<section class="slide lt" id="a-estrutura-que-vem" data-title="A estrutura que vem">
   <div class="inner">
     <span class="eyebrow">12 · O ecossistema</span>
     <h2 class="h2">A estrutura que cresce com o clube</h2>
@@ -1077,7 +1134,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 18 VOLUNTARIO -->
-<section class="slide" data-title="O que o voluntário ganha">
+<section class="slide" id="o-que-o-voluntario-ganha" data-title="O que o voluntário ganha">
   <div class="inner">
     <span class="eyebrow">12 · O ecossistema</span>
     <h2 class="h2">O que o voluntário ganha</h2>
@@ -1092,7 +1149,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 19 COMPROMISSO -->
-<section class="slide lt" data-title="O compromisso">
+<section class="slide lt" id="o-compromisso" data-title="O compromisso">
   <div class="inner">
     <span class="eyebrow">13 · O compromisso</span>
     <h2 class="h2">O que pedimos de quem entra</h2>
@@ -1108,7 +1165,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </section>
 
 <!-- 20 FAQ -->
-<section class="slide lt" data-title="Perguntas frequentes">
+<section class="slide lt" id="perguntas-frequentes" data-title="Perguntas frequentes">
   <div class="inner">
     <span class="eyebrow">14 · Perguntas frequentes</span>
     <h2 class="h2">Perguntas que todo mundo faz</h2>
@@ -1176,9 +1233,16 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
     </div>
   </div>
 </section>
-
-</div>
 </main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-brand"><img src="/img/crsc-v2.webp" alt="Escudo C.R.S.C"><div><b>Sons Church FC</b><span class="motto">Disciplina <b>·</b> Amizade <b>·</b> Propósito</span></div></div>
+    <nav class="foot-nav" aria-label="Rodapé"><a href="#a-origem">A história</a><a href="#a-visao">O projeto</a><a href="#os-dois-cenarios">O clube</a><a href="#nossas-redes">Conteúdo</a><a href="#socio-torcedor">Seja sócio</a><a href="#o-ecossistema">Ecossistema</a><a href="#perguntas-frequentes">Dúvidas</a><a href="#sim">O seu sim</a></nav>
+    <div class="foot-ct"><span>Contato: <a href="mailto:innoprobusiness@gmail.com">innoprobusiness@gmail.com</a></span><a href="/apresentacao">Ver em modo apresentação →</a></div>
+  </div>
+  <p class="foot-cp">© 2026 Projeto Sons Church FC · Toda segunda, 20h30: oração, louvor e Palavra. 21h: bola rolando.</p>
+</footer>
 
 <div class="bio" id="bio" hidden role="dialog" aria-modal="true" aria-labelledby="bioName">
   <div class="bio-box">
@@ -1196,64 +1260,33 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
   </div>
 </div>
 <div class="lbx" id="lbx" hidden role="dialog" aria-modal="true" aria-label="Arte do reforço"><button class="x" id="lbxX">Fechar ✕</button><button class="nv" id="lbxP" aria-label="Anterior">←</button><img id="lbxImg" alt=""><button class="nv" id="lbxN" aria-label="Próximo">→</button></div>
-<nav class="nav" id="nav" aria-label="Navegação dos slides">
-  <button class="arrow" id="prev" aria-label="Slide anterior">←</button>
-  <div class="mid"><div class="bar"><i id="barFill"></i></div><div class="navlabel" id="navlabel">Capa</div></div>
-  <button class="arrow fill" id="next" aria-label="Próximo slide">→</button>
-</nav>
-
 <script>
 (function(){
-  var track=document.getElementById('track'), slides=[].slice.call(track.children), N=slides.length, cur=0;
-  var top=document.getElementById('top'), nav=document.getElementById('nav'), prev=document.getElementById('prev'), next=document.getElementById('next');
-  var count=document.getElementById('count'), barFill=document.getElementById('barFill'), navlabel=document.getElementById('navlabel');
-  var pad=function(n){return String(n).padStart(2,'0')};
-
-  // Chapter menu
-  var list=document.getElementById('drawerList'), drawer=document.getElementById('drawer'), mb=document.getElementById('menuBtn');
-  slides.forEach(function(s,i){var b=document.createElement('button');b.className='it';b.innerHTML='<span>'+pad(i+1)+'</span>'+s.dataset.title;b.onclick=function(){go(i);toggle(false)};list.appendChild(b)});
+  var slides=[].slice.call(document.querySelectorAll('main > .slide'));
+  // Menu
+  var drawer=document.getElementById('drawer'), mb=document.getElementById('menuBtn');
   function toggle(v){drawer.classList.toggle('open',v);mb.setAttribute('aria-expanded',v)}
   mb.onclick=function(){toggle(!drawer.classList.contains('open'))};
   document.getElementById('drawerX').onclick=function(){toggle(false)};
-
-  function go(i,noHash){
-    i=Math.max(0,Math.min(N-1,i)); cur=i;
-    track.style.transform='translateX('+(-100*i)+'%)';
-    slides.forEach(function(s,j){s.setAttribute('aria-hidden',j!==i);s.inert=(j!==i)});
-    var lt=slides[i].classList.contains('lt');
-    top.classList.toggle('lt',lt); nav.classList.toggle('lt',lt);
-    count.textContent=pad(i+1)+' / '+pad(N);
-    barFill.style.width=((i+1)/N*100)+'%';
-    navlabel.textContent=slides[i].dataset.title;
-    prev.disabled=i===0; next.disabled=i===N-1;
-    [].forEach.call(list.children,function(b,j){b.classList.toggle('on',j===i)});
-    if(!noHash){try{history.replaceState(null,'','#slide-'+(i+1))}catch(e){}}
-  }
-  prev.onclick=function(){go(cur-1)}; next.onclick=function(){go(cur+1)};
-  document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){var v=b.dataset.go;go(v==='last'?N-1:+v)})});
-
-  // Keyboard
-  addEventListener('keydown',function(e){
-    var t=e.target.tagName; if(t==='INPUT'||t==='TEXTAREA'||t==='SELECT')return;
-    if(e.key==='ArrowRight'||e.key==='PageDown'){go(cur+1);e.preventDefault()}
-    else if(e.key==='ArrowLeft'||e.key==='PageUp'){go(cur-1);e.preventDefault()}
-    else if(e.key==='Home'){go(0)} else if(e.key==='End'){go(N-1)}
-    else if(e.key==='Escape'){toggle(false)}
-  });
-
-  // Swipe (horizontal only)
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggle(false)})});
+  addEventListener('keydown',function(e){if(e.key==='Escape')toggle(false)});
+  // Progresso de leitura e seção ativa
+  var prog=document.getElementById('prog'), tl=[].slice.call(document.querySelectorAll('.tnav a')), dl=[].slice.call(drawer.querySelectorAll('a'));
+  function onScroll(){var h=document.documentElement, max=h.scrollHeight-h.clientHeight;prog.style.width=(max>0?h.scrollTop/max*100:0)+'%';
+    var y=scrollY+120, curId=slides[0].id; slides.forEach(function(sl){if(sl.offsetTop<=y)curId=sl.id});
+    dl.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+curId)});
+    var gi=-1; tl.forEach(function(a,i){var t=document.querySelector(a.getAttribute('href'));if(t&&t.offsetTop<=y)gi=i});
+    tl.forEach(function(a,i){a.classList.toggle('on',i===gi)})}
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  // Links antigos do carrossel (#slide-12) levam à seção certa
+  var m=/^#slide-(\d+)$/.exec(location.hash); if(m&&slides[+m[1]-1])slides[+m[1]-1].scrollIntoView();
+  // Swipe só para carrossel do manto, galeria e biografias
   function swipe(el,onL,onR,stop){
     var x0=null,y0=null;
-    el.addEventListener('touchstart',function(e){if(stop)e.stopPropagation();if(e.target.closest&&e.target.closest('[data-noswipe]')){x0=null;return}var t=e.touches[0];x0=t.clientX;y0=t.clientY},{passive:true});
+    el.addEventListener('touchstart',function(e){if(stop)e.stopPropagation();var t=e.touches[0];x0=t.clientX;y0=t.clientY},{passive:true});
     el.addEventListener('touchend',function(e){if(stop)e.stopPropagation();if(x0===null)return;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;
       if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.4){dx<0?onL():onR()}},{passive:true});
   }
-  swipe(document.getElementById('deck'),function(){go(cur+1)},function(){go(cur-1)});
-
-  // Hash start
-  var m=/^#slide-(\d+)$/.exec(location.hash); track.style.transition='none'; go(m?+m[1]-1:0,true); track.offsetWidth; track.style.transition='';
-  addEventListener('hashchange',function(){var m=/^#slide-(\d+)$/.exec(location.hash);if(m&&+m[1]-1!==cur)go(+m[1]-1,true)});
-
   // Kit carousel
   var names=["Modelo A Escuro", "Modelo A Claro", "Modelo C Escuro", "Modelo C Claro", "Modelo D Pinceladas", "Coletes dupla face"];
   var kt=document.getElementById('kcTrack'), kn=kt.children.length, k=0, dots=document.getElementById('kcDots');
@@ -1315,7 +1348,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
     document.getElementById('tv-t1').hidden=t!=='t1';document.getElementById('tv-t2').hidden=t!=='t2'}
   tps.forEach(function(b){b.onclick=function(){pickTeam(b.dataset.team)}});
   document.querySelectorAll('[data-team-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();pickTeam(a.dataset.teamGo);
-    var i=slides.findIndex(function(sl){return sl.dataset.title==='Time 1 e Time 2'});if(i>=0)go(i)})});
+    document.getElementById('time-1-e-time-2').scrollIntoView({behavior:'smooth'})})});
 
 
   // Live supporters ticker: duplicate items for seamless loop

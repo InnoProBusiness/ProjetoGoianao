@@ -1,7 +1,8 @@
-# Imersão Sons Church FC — carrossel
+# Sons Church FC — landing page
 
 ## Estrutura
-- `index.html` — o carrossel completo (31 slides)
+- `index.html` — a landing page (rolagem contínua, todas as seções da imersão)
+- `apresentacao.html` — a mesma imersão em modo carrossel, em `/apresentacao`
 - `img/` — foto do time, uniformes, colete, logo e escudo C.R.S.C
 - `fonts/` — fontes da identidade (Barlow Condensed, Barlow e Permanent Marker), hospedadas junto com o site
 - `api/inscricao.js` — função da Vercel que envia o formulário por e-mail via Resend
@@ -26,9 +27,11 @@ Depois, faça um Redeploy.
 Todas as imagens (Nilston, uniformes, redes, site e elenco) já estão em `img/`. Para trocar uma, substitua o arquivo mantendo o mesmo nome.
 
 ## Navegação
-- Setas na tela, setas do teclado ou deslizar para o lado no celular.
-- Botão "Capítulos" abre o índice.
-- Cada slide tem link próprio: `.../#slide-12` abre direto no manto.
+- Menu fixo no topo com as seções principais e o botão "Quero fazer parte" (leva ao formulário).
+- No celular e tablet, o botão "Menu" abre a lista de todas as seções.
+- Cada seção tem link próprio, por exemplo `/#socio-torcedor` ou `/#sim`.
+- Links antigos do carrossel (`/#slide-12`) continuam abrindo a seção certa.
+- O modo apresentação continua em `/apresentacao`.
 
 ## Identidade visual
 | Elemento | Definição |

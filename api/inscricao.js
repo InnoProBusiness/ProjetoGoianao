@@ -1,7 +1,7 @@
 // Recebe o formulário da imersão e envia por e-mail via Resend.
 // Variáveis de ambiente na Vercel:
 //   RESEND_API_KEY (obrigatória)
-//   RESEND_FROM    (opcional, remetente de um domínio verificado no Resend)
+//   RESEND_FROM ou RESEND_FROM_EMAIL (opcional, remetente de um domínio verificado no Resend)
 //   TO_EMAIL       (opcional, padrão innoprobusiness@gmail.com)
 
 const esc = (v) =>
@@ -65,7 +65,7 @@ module.exports = async (req, res) => {
   }
 
   const to = process.env.TO_EMAIL || "innoprobusiness@gmail.com";
-  const from = process.env.RESEND_FROM || "Projeto Sons Church <contato@innoprobusiness.com.br>";
+  const from = process.env.RESEND_FROM || process.env.RESEND_FROM_EMAIL || "Projeto Sons Church <contato@innoprobusiness.com.br>";
   const tipo = body.tipo === "apoiador" ? "Apoiador" : "Jogador";
 
   const rows = Object.keys(LABELS)

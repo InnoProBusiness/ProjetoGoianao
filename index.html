@@ -379,6 +379,35 @@ blockquote{border-left-color:var(--gold)}
 tr.alt td{color:var(--gr);font-style:italic}
 tr.free td{color:var(--gold2)}
 tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;font-weight:800;font-style:normal;letter-spacing:.08em;color:#141008;background:var(--gold);border-radius:6px;padding:1px 6px}
+
+.week{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
+.wd{border:1px solid var(--line);border-radius:14px;padding:12px 10px;display:grid;gap:3px;background:var(--bk2);min-width:0}
+.wd small{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gr)}
+.wd b{font-family:var(--d);font-weight:800;text-transform:uppercase;font-size:20px;line-height:1}
+.wd span{font-size:12.5px;color:var(--gr);line-height:1.3}
+.wd.vl{border-color:var(--gold);background:linear-gradient(160deg,rgba(212,169,70,.18),rgba(212,169,70,.03))}
+.wd.vl b{color:var(--gold2)}
+@media(max-width:900px){.week{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.fs{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--lline);border-radius:14px;padding:14px;min-width:0}
+.fs b{font-family:var(--d);font-weight:800;font-size:28px;line-height:1;color:var(--goldd)}
+.fs span{font-size:14.5px;line-height:1.4}
+.fs.go{background:var(--ink);color:var(--wh);border-color:var(--ink)}.fs.go b{color:var(--gold2)}
+@media(max-width:820px){.flow{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.flow{grid-template-columns:1fr}}
+.profile{background:#0B0B0B;color:var(--wh);border-radius:18px;padding:20px;display:grid;gap:12px;position:relative;box-shadow:0 24px 50px -28px rgba(0,0,0,.6)}
+.pf-top{display:flex;gap:14px;align-items:center}
+.pf-av{width:62px;height:62px;border-radius:50%;background:var(--goldgrad);color:#141008;display:flex;align-items:center;justify-content:center;font-family:var(--d);font-weight:800;font-size:24px;flex:none}
+.pf-top small{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.pf-top b{display:block;font-family:var(--d);font-weight:800;text-transform:uppercase;font-size:24px;line-height:1.05}
+.pf-top span{font-size:13px;color:var(--gr)}
+.profile p{font-size:14.5px;color:#CFCFCA;line-height:1.5}
+.pf-tags{display:flex;flex-wrap:wrap;gap:6px}
+.pf-tags span{border:1px solid #333;border-radius:99px;padding:4px 10px;font-size:12px;color:#ccc}
+.pf-btns{display:flex;flex-wrap:wrap;gap:8px}
+.pf-btns span{border:1px solid #444;border-radius:99px;padding:9px 14px;font-size:13px;font-weight:700}
+.pf-btns .pf-wa{background:var(--gold);color:#141008;border-color:var(--gold)}
+.pf-ex{position:absolute;top:14px;right:14px;font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--sim);border:1px solid #5b4a1d;background:#211a08;border-radius:6px;padding:2px 6px}
 </style>
 </head>
 <body>
@@ -728,12 +757,49 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 <!-- 13 MOTOR DE CONTEUDO -->
 <section class="slide" data-title="Motor de conteúdo">
   <div class="inner">
-    <span class="eyebrow">08 · Nossas redes</span>
-    <h2 class="h2">Um jogo, seis conteúdos</h2>
-    <div class="grid g3">
-      <div class="card"><h3 class="h3">O vlog do dia de jogo</h3><span class="muted">Em cada jogo, um jogador grava o “Vem comigo”: quem ele é, o que faz e por que entrou no projeto.</span></div>
-      <div class="card"><h3 class="h3">4 vlogs e 20 cortes por mês</h3><span class="muted">Um vídeo longo no YouTube e pelo menos cinco cortes por jogo, sem pagar produtora.</span></div>
-      <div class="card"><h3 class="h3">Vitrine para quem trabalha</h3><span class="muted">O público conhece pessoas reais, e o trabalho de cada um aparece com crédito e contato.</span></div>
+    <span class="eyebrow">08 · Nossas redes · o conteúdo</span>
+    <h2 class="h2">Toda semana: 1 vlog e <span class="brush">7 cortes.</span></h2>
+    <p class="lead">Um jogo por semana vira um vlog completo no YouTube e sete cortes para Instagram e TikTok, entre trechos do vlog e bastidores. Um por dia, sem pagar produtora.</p>
+    <div class="week" aria-label="Calendário de uma semana de conteúdo">
+      <div class="wd vl"><small>Sáb</small><b>Jogo</b><span>Gravação do vlog</span></div>
+      <div class="wd vl"><small>Seg</small><b>Vlog</b><span>YouTube + corte 1</span></div>
+      <div class="wd"><small>Ter</small><b>Corte 2</b><span>Lance do jogo</span></div>
+      <div class="wd"><small>Qua</small><b>Corte 3</b><span>Bastidor</span></div>
+      <div class="wd"><small>Qui</small><b>Corte 4</b><span>Quem é o vlogueiro</span></div>
+      <div class="wd"><small>Sex</small><b>Corte 5</b><span>Bastidor</span></div>
+      <div class="wd"><small>Sáb</small><b>Corte 6</b><span>Chamada do jogo</span></div>
+      <div class="wd"><small>Dom</small><b>Corte 7</b><span>Fé e Palavra</span></div>
+    </div>
+    <div class="grid g2">
+      <div class="card"><span class="eyebrow">Em cada vlog, um protagonista</span><h3 class="h3">Quem apresenta, mostra quem é</h3>
+        <ul class="plain" style="font-size:15px"><li>O trabalho que faz e como pode ajudar quem assiste</li><li>Por que aceitou entrar no projeto</li><li>Para que ele quer fazer parte</li></ul></div>
+      <div class="card inv"><span class="eyebrow">O resultado</span><h3 class="h3">52 vlogs e 364 cortes por ano</h3><span class="muted">Cada vídeo termina com o mesmo convite: conheça os profissionais que apoiam o projeto na nossa plataforma.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13b VITRINE -->
+<section class="slide lt" data-title="Vitrine de apoiadores">
+  <div class="inner">
+    <span class="eyebrow">08 · Nossas redes · a vitrine</span>
+    <h2 class="h2">Quem apoia o projeto ganha vitrine</h2>
+    <p class="lead">Cada pessoa que participa do projeto, jogando ou prestando serviço, ganha um perfil na aba <b>Apoiadores e Parceiros</b> do site: o que faz, como trabalha e como falar com ela. Os vlogs levam o público até lá.</p>
+    <div class="flow">
+      <div class="fs"><b>1</b><span>O vlog mostra o seu trabalho e a sua história</span></div>
+      <div class="fs"><b>2</b><span>No fim do vídeo, o convite: “conheça quem apoia o projeto”</span></div>
+      <div class="fs"><b>3</b><span>A pessoa entra na plataforma e abre o seu perfil</span></div>
+      <div class="fs go"><b>4</b><span>Ela fala com você direto pelo contato do perfil</span></div>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="profile">
+        <div class="pf-top"><div class="pf-av">VS</div><div><small>Apoiador · Videomaker</small><b>[Seu nome]</b><span>Aparecida de Goiânia · GO</span></div></div>
+        <p>Produzo vídeos para empresas e eventos. Entrei no projeto porque o futebol de segunda me trouxe de volta para perto de Deus.</p>
+        <div class="pf-tags"><span>Vídeo institucional</span><span>Eventos</span><span>Reels</span></div>
+        <div class="pf-btns"><span class="pf-wa">Chamar no WhatsApp</span><span>Ver portfólio</span></div>
+        <small class="pf-ex">EXEMPLO de perfil</small>
+      </div>
+      <div class="card"><span class="eyebrow">Cada perfil traz</span>
+        <ul class="plain" style="font-size:15.5px"><li>Foto, nome e profissão</li><li>O que você faz e os serviços que oferece</li><li>Por que você entrou no projeto</li><li>Seus vídeos no projeto e o seu portfólio</li><li>Contato direto: WhatsApp, Instagram e site</li></ul></div>
     </div>
   </div>
 </section>
@@ -850,7 +916,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
     <p class="lead">O conteúdo atrai. A comunidade aproxima. Sócios, loja e parceiros pagam a conta.</p>
     <div class="grid g3">
       <div class="card"><h3 class="h3">Loja e gráfica parceira</h3><span class="muted">Camisa Fundador, camisas com nome e número, coletes e kits, sob demanda com uma confecção parceira.</span></div>
-      <div class="card"><h3 class="h3">Vitrine dos voluntários</h3><span class="muted">Uma página com o serviço de cada um: vídeo, stories, tráfego, design, networking.</span></div>
+      <div class="card"><h3 class="h3">Apoiadores e Parceiros</h3><span class="muted">Uma aba no site com o perfil e o contato de cada pessoa do projeto, divulgada em todo vlog.</span></div>
       <div class="card"><h3 class="h3">Igrejas parceiras</h3><span class="muted">Selo e plano próprio. Jogos que terminam com culto na igreja parceira.</span></div>
       <div class="card"><h3 class="h3">Culto antes da bola</h3><span class="muted">O mesmo momento de oração, louvor e Palavra da segunda, levado aos amistosos, com o adversário junto.</span></div>
       <div class="card"><h3 class="h3">Campo com a prefeitura</h3><span class="muted">Espaço municipal ou estadual em Aparecida de Goiânia ou Goiânia, para treinar sem custo.</span></div>
@@ -866,7 +932,7 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
     <h2 class="h2">O que o voluntário ganha</h2>
     <div class="grid g2">
       <div class="card"><h3 class="h3">Crédito em tudo</h3><span class="muted">Seu @ em todo vídeo, post e peça que você produzir.</span></div>
-      <div class="card"><h3 class="h3">Página na Vitrine</h3><span class="muted">Portfólio, serviços e botão de contato no site do clube.</span></div>
+      <div class="card"><h3 class="h3">Perfil no site</h3><span class="muted">Na aba Apoiadores e Parceiros: o que você faz, por que entrou no projeto e o seu contato direto.</span></div>
       <div class="card"><h3 class="h3">Indicação prioritária</h3><span class="muted">Para patrocinadores e parceiros do clube que precisarem do seu serviço.</span></div>
       <div class="card"><h3 class="h3">Certificado de fundador</h3><span class="muted">Reconhecimento oficial como parte da fundação do projeto.</span></div>
     </div>

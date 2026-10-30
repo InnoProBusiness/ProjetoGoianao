@@ -408,6 +408,32 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 .pf-btns span{border:1px solid #444;border-radius:99px;padding:9px 14px;font-size:13px;font-weight:700}
 .pf-btns .pf-wa{background:var(--gold);color:#141008;border-color:var(--gold)}
 .pf-ex{position:absolute;top:14px;right:14px;font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--sim);border:1px solid #5b4a1d;background:#211a08;border-radius:6px;padding:2px 6px}
+
+.bio{position:fixed;inset:0;z-index:70;background:rgba(6,6,6,.92);display:flex;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.bio[hidden]{display:none}
+.bio-box{position:relative;background:#0F0F0F;color:var(--wh);border:1px solid var(--goldline);border-radius:22px;width:min(980px,100%);max-height:100%;overflow:auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+@media(max-width:760px){.bio-box{grid-template-columns:1fr}}
+.bio-img{background:#000;cursor:zoom-in;border:0;padding:0;display:block}
+.bio-img img{width:100%;height:100%;object-fit:cover;max-height:80vh}
+@media(max-width:760px){.bio-img img{max-height:42vh;object-position:center 15%}}
+.bio-tx{padding:26px;display:grid;gap:14px;align-content:start}
+.bio-tx small.k{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.bio-name{display:flex;align-items:baseline;gap:12px}
+.bio-name b{font-family:var(--d);font-weight:800;font-size:clamp(34px,4.6vw,52px);line-height:.95;text-transform:uppercase}
+.bio-name span{font-family:var(--d);font-weight:800;font-size:clamp(28px,3.6vw,40px);color:var(--gold2)}
+.bio-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bio-meta div{border:1px solid #2a2a2a;border-radius:12px;padding:10px 12px}
+.bio-meta small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gr)}
+.bio-meta b{font-size:15px}
+.bio-tx p{color:#CFCFCA;font-size:15.5px;line-height:1.55}
+.bio-areas{display:flex;flex-wrap:wrap;gap:6px}
+.bio-areas span{background:rgba(212,169,70,.12);border:1px solid var(--goldline);color:var(--gold2);border-radius:99px;padding:5px 11px;font-size:13px;font-weight:700}
+.bio-q{border-left:3px solid var(--gold);padding-left:14px;font-family:var(--d);font-weight:700;font-size:20px;text-transform:uppercase;line-height:1.15}
+.bio-ft{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:4px}
+.bio-ft .nv{background:#1d1d1d;border:1px solid #333;border-radius:99px;padding:9px 14px;font-weight:700;font-size:13px}
+.bio-x{position:absolute;top:12px;right:12px;z-index:2;background:#222;border:0;border-radius:99px;padding:8px 14px;font-weight:800;font-size:13px}
+.bio-ex{font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--sim);border:1px solid #5b4a1d;background:#211a08;border-radius:6px;padding:2px 6px}
+.pcard div span.more{display:block;margin-top:4px;font-size:11.5px;font-weight:800;letter-spacing:.06em;color:#D9B25A}
 </style>
 </head>
 <body>
@@ -839,19 +865,19 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
   <div class="inner" style="gap:20px">
     <span class="eyebrow">09 · O site do clube</span>
     <h2 class="h2">Assim o elenco aparece no site</h2>
-    <p class="lead">Cada reforço ganha arte de anúncio, card no elenco e ficha própria. Toque em um jogador para ver a arte inteira.</p>
+    <p class="lead">Cada reforço ganha arte de anúncio, card no elenco e biografia própria. Toque em um jogador para ler a história dele.</p>
     <span class="tag ex">EXEMPLO · simulação da página Elenco</span>
     <div class="bw">
       <div class="bw-chrome"><i></i><i></i><i></i><div class="bw-url">🔒 sonschurchfc.com.br/elenco</div></div>
       <div class="bw-nav"><div class="lg"><img src="/img/crsc-v2.webp" alt="">Sons Church FC</div><nav><span>Notícias</span><b>Elenco</b><span>Jogos</span><span>Sócio</span><span>Loja</span><span>Transparência</span></nav><span class="bw-cta">SEJA SÓCIO</span></div>
       <div class="bw-head"><h3>Elenco 2027</h3><div class="bw-filter" id="rosterFilter"><button type="button" class="on" data-f="todos">Todos</button><button type="button" data-f="goleiro">Goleiros</button><button type="button" data-f="defesa">Defesa</button><button type="button" data-f="meio">Meio</button><button type="button" data-f="ataque">Ataque</button></div></div>
       <div class="roster" data-noswipe>
-        <button class="pcard" data-i="0" data-g="meio"><img src="/img/reforco-1.webp" alt="Leonardo, camisa 10, meia. Arte de boas-vindas: reforço com o punho no peito, camisa branca C.R.S.C"><div><small>Novo reforço · #10</small><b>Leonardo</b><span>Meia</span></div></button>
-        <button class="pcard" data-i="1" data-g="defesa"><img src="/img/reforco-2.webp" alt="João Pedro, camisa 2, zagueiro. Arte Here We Go: reforço de óculos e braços cruzados, camisa C.R.S.C"><div><small>Novo reforço · #2</small><b>João Pedro</b><span>Zagueiro</span></div></button>
-        <button class="pcard" data-i="2" data-g="meio"><img src="/img/reforco-3.webp" alt="Kaio, camisa 8, volante. Arte Here We Go: reforço sorrindo de braços abertos, camisa C.R.S.C"><div><small>Novo reforço · #8</small><b>Kaio</b><span>Volante</span></div></button>
-        <button class="pcard" data-i="3" data-g="defesa"><img src="/img/reforco-4.webp" alt="Sabino, camisa 4, lateral esquerdo. Arte Bem-vindo ao nosso time: reforço sorrindo de braços cruzados"><div><small>Novo reforço · #4</small><b>Sabino</b><span>Lateral esquerdo</span></div></button>
+        <button class="pcard" data-i="0" data-g="meio"><img src="/img/reforco-1.webp" alt="Leonardo, camisa 10, meia. Arte de boas-vindas: reforço com o punho no peito, camisa branca C.R.S.C"><div><small>Novo reforço · #10</small><b>Leonardo</b><span>Meia</span><span class="more">Ver biografia →</span></div></button>
+        <button class="pcard" data-i="1" data-g="defesa"><img src="/img/reforco-2.webp" alt="João Pedro, camisa 2, zagueiro. Arte Here We Go: reforço de óculos e braços cruzados, camisa C.R.S.C"><div><small>Novo reforço · #2</small><b>João Pedro</b><span>Zagueiro</span><span class="more">Ver biografia →</span></div></button>
+        <button class="pcard" data-i="2" data-g="meio"><img src="/img/reforco-3.webp" alt="Kaio, camisa 8, volante. Arte Here We Go: reforço sorrindo de braços abertos, camisa C.R.S.C"><div><small>Novo reforço · #8</small><b>Kaio</b><span>Volante</span><span class="more">Ver biografia →</span></div></button>
+        <button class="pcard" data-i="3" data-g="defesa"><img src="/img/reforco-4.webp" alt="Sabino, camisa 4, lateral esquerdo. Arte Bem-vindo ao nosso time: reforço sorrindo de braços cruzados"><div><small>Novo reforço · #4</small><b>Sabino</b><span>Lateral esquerdo</span><span class="more">Ver biografia →</span></div></button>
         <p class="roster-empty" id="rosterEmpty" hidden>Nenhum goleiro anunciado ainda.</p>
-        <button class="pcard" data-i="4" data-g="ataque"><img src="/img/reforco-5.webp" alt="Mário, camisa 19, atacante ponta. Arte Bem-vindo: reforço de óculos escuros e braços cruzados"><div><small>Novo reforço · #19</small><b>Mário</b><span>Atacante ponta</span></div></button>
+        <button class="pcard" data-i="4" data-g="ataque"><img src="/img/reforco-5.webp" alt="Mário, camisa 19, atacante ponta. Arte Bem-vindo: reforço de óculos escuros e braços cruzados"><div><small>Novo reforço · #19</small><b>Mário</b><span>Atacante ponta</span><span class="more">Ver biografia →</span></div></button>
       </div>
     </div>
   </div>
@@ -1031,6 +1057,21 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
 </div>
 </main>
 
+<div class="bio" id="bio" hidden role="dialog" aria-modal="true" aria-labelledby="bioName">
+  <div class="bio-box">
+    <button class="bio-x" id="bioX">Fechar ✕</button>
+    <button class="bio-img" id="bioImgBtn" aria-label="Ampliar arte do jogador"><img id="bioImg" alt=""></button>
+    <div class="bio-tx">
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><small class="k">Elenco 2027 · biografia</small><span class="bio-ex">SIMULAÇÃO</span></div>
+      <div class="bio-name"><b id="bioName"></b><span id="bioNum"></span></div>
+      <div class="bio-meta"><div><small>Posição</small><b id="bioPos"></b></div><div><small>No projeto</small><b id="bioPapel"></b></div><div style="grid-column:1/-1"><small>Profissão</small><b id="bioProf"></b></div></div>
+      <p id="bioTxt"></p>
+      <div><small class="k" style="display:block;margin-bottom:8px">Onde ajuda o clube</small><div class="bio-areas" id="bioAreas"></div></div>
+      <div class="bio-q" id="bioQ"></div>
+      <div class="bio-ft"><button class="nv" id="bioP">← Anterior</button><button class="nv" id="bioN">Próximo →</button></div>
+    </div>
+  </div>
+</div>
 <div class="lbx" id="lbx" hidden role="dialog" aria-modal="true" aria-label="Arte do reforço"><button class="x" id="lbxX">Fechar ✕</button><button class="nv" id="lbxP" aria-label="Anterior">←</button><img id="lbxImg" alt=""><button class="nv" id="lbxN" aria-label="Próximo">→</button></div>
 <nav class="nav" id="nav" aria-label="Navegação dos slides">
   <button class="arrow" id="prev" aria-label="Slide anterior">←</button>
@@ -1105,7 +1146,6 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
   // Roster lightbox
   var cards=[].slice.call(document.querySelectorAll('.pcard')), lbx=document.getElementById('lbx'), li=document.getElementById('lbxImg'), lk=0;
   function lshow(i){lk=(i+cards.length)%cards.length;var im=cards[lk].querySelector('img');li.src=im.src;li.alt=im.alt;lbx.hidden=false}
-  cards.forEach(function(c,i){c.onclick=function(){lshow(i)}});
   var navBtns=[document.getElementById('lbxP'),document.getElementById('lbxN')], single=false;
   function lsingle(src,alt){single=true;li.src=src;li.alt=alt;navBtns.forEach(function(b){b.hidden=true});li.style.maxWidth='100%';lbx.hidden=false}
   var _lshow=lshow; lshow=function(i){single=false;navBtns.forEach(function(b){b.hidden=false});li.style.maxWidth='';_lshow(i)};
@@ -1117,6 +1157,26 @@ tr.free td:first-child::after{content:"DOAÇÃO";margin-left:8px;font-size:11px;
   addEventListener('keydown',function(e){if(lbx.hidden)return;e.stopImmediatePropagation();if(e.key==='Escape'){lbx.hidden=true;return}if(single)return;if(e.key==='ArrowRight')lshow(lk+1);if(e.key==='ArrowLeft')lshow(lk-1)},true);
   swipe(lbx,function(){lshow(lk+1)},function(){lshow(lk-1)},true);
 
+
+
+  // Player bios
+  var BIOS=[{"n": "Leonardo", "num": "10", "pos": "Meia", "prof": "Estrategista digital · fundador da InnoPro Business", "papel": "Jogador e fundador do projeto", "areas": ["Coordenação geral", "Marketing", "Site e plataforma"], "bio": "Começou no marketing digital em 2019 e hoje lidera a InnoPro Business, agência que cuida de marcas na internet. Em 2023 juntou os irmãos para jogar bola às segundas e viu o futebol virar ministério. No meio-campo, organiza o jogo. Fora dele, coordena o projeto ao lado do Pastor Ednam.", "q": "Eu só queria jogar bola com os irmãos. Deus mostrou que era muito mais."}, {"n": "João Pedro", "num": "2", "pos": "Zagueiro", "prof": "Fotógrafo de eventos", "papel": "Jogador e voluntário", "areas": ["Fotos dos jogos", "Artes de anúncio"], "bio": "Fotografa casamentos e eventos em Goiânia. Chegou às segundas por convite de um amigo e ficou pela resenha e pela Palavra antes do jogo. No projeto, cuida das fotos de cada amistoso e das artes de anúncio dos reforços.", "q": "Zagueiro segura o time. Fora de campo, eu seguro a câmera."}, {"n": "Kaio", "num": "8", "pos": "Volante", "prof": "Gestor de tráfego pago", "papel": "Jogador e voluntário", "areas": ["Anúncios do sócio-torcedor", "Campanha dos 230 apoiadores"], "bio": "Trabalha com anúncios on-line para pequenas empresas. Joga desde o primeiro mês do futebol de segunda. No projeto, cuida dos anúncios que levam novos apoiadores até a plataforma.", "q": "Se cada vlog alcançar quem precisa ouvir, já valeu."}, {"n": "Sabino", "num": "4", "pos": "Lateral esquerdo", "prof": "Técnico em manutenção", "papel": "Só jogador, por enquanto", "areas": ["Em campo, todo sábado"], "bio": "Trabalha com manutenção predial e não perde um sábado. Ainda não assumiu uma área fora de campo, mas é presença certa nos amistosos e na oração antes do jogo. O projeto também é para quem quer apenas jogar e caminhar junto.", "q": "Meu ministério é estar lá toda semana."}, {"n": "Mário", "num": "19", "pos": "Atacante ponta", "prof": "Videomaker e editor", "papel": "Jogador e voluntário", "areas": ["Vlog do dia de jogo", "Cortes da semana"], "bio": "Edita vídeos para criadores de conteúdo e empresas. Topou o projeto porque viu nos vlogs um jeito de mostrar a fé sem forçar. No time, é ele quem monta o vlog semanal e os sete cortes.", "q": "Faço gol no sábado e edito o gol na segunda."}];
+  var bio=document.getElementById('bio'), bk=0;
+  function bshow(i){bk=(i+cards.length)%cards.length;var d=BIOS[bk],im=cards[bk].querySelector('img');
+    document.getElementById('bioImg').src=im.src;document.getElementById('bioImg').alt=im.alt;
+    document.getElementById('bioName').textContent=d.n;document.getElementById('bioNum').textContent='#'+d.num;
+    document.getElementById('bioPos').textContent=d.pos;document.getElementById('bioPapel').textContent=d.papel;document.getElementById('bioProf').textContent=d.prof;
+    document.getElementById('bioTxt').textContent=d.bio;document.getElementById('bioQ').textContent='“'+d.q+'”';
+    var a=document.getElementById('bioAreas');a.innerHTML='';d.areas.forEach(function(x){var sp=document.createElement('span');sp.textContent=x;a.appendChild(sp)});
+    bio.hidden=false;bio.querySelector('.bio-box').scrollTop=0;document.getElementById('bioX').focus()}
+  cards.forEach(function(c,i){c.onclick=function(){bshow(i)}});
+  document.getElementById('bioX').onclick=function(){bio.hidden=true};
+  document.getElementById('bioP').onclick=function(){bshow(bk-1)};
+  document.getElementById('bioN').onclick=function(){bshow(bk+1)};
+  document.getElementById('bioImgBtn').onclick=function(){var im=document.getElementById('bioImg');lsingle(im.src,im.alt)};
+  bio.addEventListener('click',function(e){if(e.target===bio)bio.hidden=true});
+  addEventListener('keydown',function(e){if(bio.hidden||!lbx.hidden)return;e.stopImmediatePropagation();if(e.key==='Escape')bio.hidden=true;if(e.key==='ArrowRight')bshow(bk+1);if(e.key==='ArrowLeft')bshow(bk-1)},true);
+  swipe(bio,function(){bshow(bk+1)},function(){bshow(bk-1)},true);
 
   // Roster filter
   var rf=document.getElementById('rosterFilter');

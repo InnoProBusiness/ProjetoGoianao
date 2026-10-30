@@ -359,6 +359,22 @@ blockquote{border-left-color:var(--gold)}
 .twoteams .team b{display:block;font-family:var(--d);font-weight:800;text-transform:uppercase;font-size:clamp(24px,2.8vw,32px);line-height:1.05;margin:2px 0 4px}
 .twoteams .team span{font-size:14.5px;color:var(--inks)}
 @media(max-width:520px){.twoteams .team img{height:84px}}
+
+.teampick{display:grid;gap:12px}
+.tp{display:flex;align-items:center;gap:16px;text-align:left;padding:14px 16px;border-radius:18px;border:1px solid var(--line);background:var(--bk2);color:var(--wh);transition:border-color .2s,background .2s}
+.tp img{height:70px;width:70px;object-fit:contain;flex:none}
+.tp img[src*="sons-heart"]{filter:invert(1)}
+.tp small{display:block;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.tp b{display:block;font-family:var(--d);font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.6vw,30px);line-height:1.05}
+.tp em{display:block;font-style:normal;font-size:14px;color:var(--gr);margin-top:2px}
+.tp.on{border-color:var(--gold);background:linear-gradient(120deg,rgba(212,169,70,.16),rgba(212,169,70,.03))}
+.tp:not(.on):hover{border-color:var(--goldline)}
+.tview[hidden]{display:none}
+.shot.uni1{width:auto;max-width:100%;margin:0 auto;border-radius:20px;border-color:var(--goldline)}
+.shot.uni1 img{max-height:64vh;width:auto}
+.twoteams a.team{text-decoration:none;color:inherit;transition:border-color .2s}
+.twoteams a.team:hover{border-color:var(--goldd)}
+.twoteams .team .go{margin-left:auto;font-family:var(--d);font-size:22px;color:var(--goldd)}
 </style>
 </head>
 <body>
@@ -529,43 +545,51 @@ blockquote{border-left-color:var(--gold)}
     </table></div>
     <p class="muted" style="font-size:14px">A entrada de investidores ainda não está definida. Quando acontecer, as regras, os riscos e a participação de cada um serão apresentados por escrito, com orientação de advogado.</p>
     <div style="display:grid;gap:10px">
-      <span class="eyebrow">E o nome do clube? Também são dois caminhos</span>
+      <span class="eyebrow">E o nome do clube? Dois times possíveis · toque para ver</span>
       <div class="grid g2 twoteams">
-        <div class="card team"><img src="/img/sons-full.webp" alt="Logo da Sons Church: coração formado por duas pessoas"><div><small>Opção 1</small><b>Sons Church FC</b><span>O clube leva o nome e o símbolo da igreja.</span></div></div>
-        <div class="card team"><img src="/img/crsc.webp" alt="Escudo C.R.S.C: leão coroado, Cristo Reina Sons Church"><div><small>Opção 2</small><b>Cristo Reina · C.R.S.C</b><span>Nome e escudo próprios. A Sons Church vira a patrocinadora master.</span></div></div>
+        <a class="card team" href="#" data-team-go="t1"><img src="/img/sons-heart.webp" alt="Símbolo da Sons Church: coração formado por duas pessoas"><div><small>Time 1</small><b>Sons Church FC</b><span>O clube leva o nome e o símbolo da igreja.</span></div><span class="go">→</span></a>
+        <a class="card team" href="#" data-team-go="t2"><img src="/img/crsc.webp" alt="Escudo C.R.S.C: leão coroado, Cristo Reina Sons Church"><div><small>Time 2</small><b>Cristo Reina · C.R.S.C</b><span>Nome e escudo próprios. A Sons Church vira a patrocinadora master.</span></div><span class="go">→</span></a>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- 07b NOME PROPRIO -->
-<section class="slide" data-title="Opção 2: nome próprio">
+<!-- 07b DOIS TIMES -->
+<section class="slide" data-title="Time 1 e Time 2">
   <div class="inner">
     <span class="eyebrow">05 · Os dois cenários · o nome</span>
     <div class="idn">
-      <div style="display:grid;gap:20px;min-width:0">
-        <h2 class="h2" style="font-size:clamp(32px,4.4vw,56px)">Nome próprio. A Sons como <span class="brush">patrocinadora master.</span></h2>
-        <p class="lead">Nesta opção, o clube ganha um nome só dele e veste o escudo do leão. A Sons Church entra como patrocinadora principal: o coração aparece no centro da camisa, no site e em todo vídeo.</p>
-        <div class="namecard"><img src="/img/crsc.webp" alt="Escudo do leão coroado"><div><small>O clube</small><b>Cristo Reina · C.R.S.C</b><span>Escudo do leão coroado</span></div></div>
-        <div class="namecard sp"><img src="/img/sons-full.webp" alt="Logo da Sons Church: coração formado por duas pessoas"><div><small>Patrocinadora master</small><b>Sons Church</b><span>A igreja onde o projeto nasceu</span></div></div>
+      <div style="display:grid;gap:18px;min-width:0">
+        <h2 class="h2" style="font-size:clamp(32px,4.4vw,56px)">Dois times possíveis. <span class="brush">Qual é o nosso?</span></h2>
+        <p class="lead">Toque no nome de cada time para ver como ele entra em campo.</p>
+        <div class="teampick" role="tablist" aria-label="Escolha o time">
+          <button class="tp on" role="tab" aria-selected="true" data-team="t1"><img src="/img/sons-heart.webp" alt=""><span><small>Time 1</small><b>Sons Church FC</b><em>O clube leva o nome e o símbolo da igreja.</em></span></button>
+          <button class="tp" role="tab" aria-selected="false" data-team="t2"><img src="/img/crsc.webp" alt=""><span><small>Time 2</small><b>Cristo Reina · C.R.S.C</b><em>Nome e escudo próprios. A Sons Church vira a patrocinadora master.</em></span></button>
+        </div>
       </div>
       <div style="display:grid;gap:10px;min-width:0">
-        <div class="kitmock" role="img" aria-label="Camisa preta com o escudo do leão no peito e o logo da Sons Church grande no centro, como patrocinadora master">
-          <svg viewBox="0 0 400 440" aria-hidden="true">
+        <div class="tview" id="tv-t1">
+          <button class="shot zoomable uni1"><img src="/img/time1-uniforme.webp" alt="Time 1, Sons Church FC: uniforme preto com o símbolo da Sons Church no peito, frente, costas e detalhes"></button>
+          <p class="cap-note">Time 1 · uniforme com o símbolo da Sons Church · toque para ampliar</p>
+        </div>
+        <div class="tview" id="tv-t2" hidden>
+          <div class="kitmock" role="img" aria-label="Time 2: camisa preta com o escudo do leão no peito e o logo da Sons Church grande no centro, como patrocinadora master">
+            <svg viewBox="0 0 400 440" aria-hidden="true">
             <defs><linearGradient id="jg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#1c1c1c"/><stop offset="1" stop-color="#070707"/></linearGradient></defs>
             <path d="M128 18 L160 6 Q200 34 240 6 L272 18 L352 58 L392 132 L338 160 L316 128 L316 430 L84 430 L84 128 L62 160 L8 132 L48 58 Z" fill="url(#jg)" stroke="#F4F2EC" stroke-width="3" stroke-linejoin="round"/>
             <path d="M160 6 Q200 40 240 6" fill="none" stroke="#F4F2EC" stroke-width="9"/>
             <path d="M338 160 L392 132 L384 116 L330 144 Z M62 160 L8 132 L16 116 L70 144 Z" fill="#F4F2EC"/>
             <path d="M84 392 L316 318 L316 338 L84 412 Z" fill="#D4A946" opacity=".9"/>
           </svg>
-          <span class="km-sup">C.R.S.C</span>
-          <img class="km-crest" src="/img/crsc.webp" alt="">
-          <img class="km-sons" src="/img/sons-full.webp" alt="">
-          <span class="km-tag t1">Escudo do clube</span>
-          <span class="km-tag t2">Patrocinadora master</span>
+            <span class="km-sup">C.R.S.C</span>
+            <img class="km-crest" src="/img/crsc.webp" alt="">
+            <img class="km-sons" src="/img/sons-full.webp" alt="">
+            <span class="km-tag t1">Escudo do clube</span>
+            <span class="km-tag t2">Patrocinadora master</span>
+          </div>
+          <p class="cap-note">Time 2 · ilustração com o escudo do leão e a Sons Church como patrocinadora master</p>
         </div>
-        <p class="cap-note">Ilustração da camisa no cenário de nome próprio</p>
       </div>
     </div>
   </div>
@@ -575,9 +599,9 @@ blockquote{border-left-color:var(--gold)}
 <section class="slide lt" data-title="Qual nome escolher">
   <div class="inner">
     <span class="eyebrow">05 · Os dois cenários · o nome</span>
-    <h2 class="h2">Sons Church FC ou nome próprio?</h2>
+    <h2 class="h2">Sons Church FC ou Cristo Reina?</h2>
     <div class="tbl"><table>
-      <tr><th style="width:22%"></th><th>Opção 1 · Sons Church FC</th><th>Opção 2 · Nome próprio + Sons patrocinadora</th></tr>
+      <tr><th style="width:22%"></th><th>Time 1 · Sons Church FC</th><th>Time 2 · Cristo Reina C.R.S.C</th></tr>
       <tr><td><b>Nome</b></td><td>Sons Church FC</td><td>Cristo Reina · C.R.S.C</td></tr>
       <tr><td><b>Escudo</b></td><td>Coração da Sons Church</td><td>Leão coroado, C.R.S.C</td></tr>
       <tr><td><b>Papel da Sons</b></td><td>A marca do clube é a marca da igreja</td><td>Patrocinadora master, com contrato e contrapartidas</td></tr>
@@ -1027,6 +1051,15 @@ blockquote{border-left-color:var(--gold)}
     rf.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
     cards.forEach(function(c){var show=f==='todos'||c.dataset.g===f;c.hidden=!show;if(show)n++});
     document.getElementById('rosterEmpty').hidden=n>0;}})}
+
+
+  // Team picker (Time 1 / Time 2)
+  var tps=[].slice.call(document.querySelectorAll('.tp'));
+  function pickTeam(t){tps.forEach(function(b){var on=b.dataset.team===t;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});
+    document.getElementById('tv-t1').hidden=t!=='t1';document.getElementById('tv-t2').hidden=t!=='t2'}
+  tps.forEach(function(b){b.onclick=function(){pickTeam(b.dataset.team)}});
+  document.querySelectorAll('[data-team-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();pickTeam(a.dataset.teamGo);
+    var i=slides.findIndex(function(sl){return sl.dataset.title==='Time 1 e Time 2'});if(i>=0)go(i)})});
 
   // Tabs (token/invest)
   document.querySelectorAll('.seg').forEach(function(seg){
